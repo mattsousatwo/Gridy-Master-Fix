@@ -162,6 +162,17 @@
                                 <color key="textColor" red="0.2826996148" green="0.2710390687" blue="0.2417342663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Gk-bU-SCy">
+                                <rect key="frame" x="135" y="551" width="105" height="71"/>
+                                <color key="backgroundColor" red="0.53166013960000003" green="0.83183425659999999" blue="0.59627997880000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="kkl-ya-7bW" kind="presentation" identifier="FramingToPlayfield" id="im1-DX-pOg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -170,13 +181,17 @@
                             <constraint firstItem="t87-tq-pVp" firstAttribute="top" secondItem="fu6-ea-3AU" secondAttribute="top" constant="141" id="Ahu-B5-BEY"/>
                             <constraint firstItem="g02-ut-QPV" firstAttribute="leading" secondItem="fu6-ea-3AU" secondAttribute="leading" constant="330" id="CkR-6e-NOn"/>
                             <constraint firstItem="iDu-Qh-EFn" firstAttribute="top" secondItem="fu6-ea-3AU" secondAttribute="top" constant="55" id="D2J-Qu-7jq"/>
+                            <constraint firstItem="fu6-ea-3AU" firstAttribute="trailing" secondItem="5Gk-bU-SCy" secondAttribute="trailing" constant="135" id="IdK-uV-Nh5"/>
                             <constraint firstItem="ihZ-GW-Ued" firstAttribute="trailing" secondItem="fu6-ea-3AU" secondAttribute="trailing" id="PZA-dN-3Hr"/>
                             <constraint firstItem="t87-tq-pVp" firstAttribute="top" secondItem="iDu-Qh-EFn" secondAttribute="bottom" constant="18" id="RN5-5S-yr1"/>
                             <constraint firstItem="t87-tq-pVp" firstAttribute="top" secondItem="g02-ut-QPV" secondAttribute="bottom" constant="104" id="SVC-zK-acj"/>
                             <constraint firstItem="ihZ-GW-Ued" firstAttribute="bottom" secondItem="fu6-ea-3AU" secondAttribute="bottom" id="ZIg-sS-ioP"/>
                             <constraint firstItem="fu6-ea-3AU" firstAttribute="trailing" secondItem="iDu-Qh-EFn" secondAttribute="trailing" constant="85" id="Zwa-i1-YOs"/>
+                            <constraint firstItem="5Gk-bU-SCy" firstAttribute="top" secondItem="t87-tq-pVp" secondAttribute="bottom" constant="45" id="ccu-ld-th6"/>
+                            <constraint firstItem="5Gk-bU-SCy" firstAttribute="leading" secondItem="fu6-ea-3AU" secondAttribute="leading" constant="135" id="fkB-Vj-TSw"/>
                             <constraint firstItem="fu6-ea-3AU" firstAttribute="bottom" secondItem="t87-tq-pVp" secondAttribute="bottom" constant="161" id="g0y-Jv-ILC"/>
                             <constraint firstItem="ihZ-GW-Ued" firstAttribute="top" secondItem="MKO-sI-FnU" secondAttribute="top" id="hRP-uO-drI"/>
+                            <constraint firstItem="fu6-ea-3AU" firstAttribute="bottom" secondItem="5Gk-bU-SCy" secondAttribute="bottom" constant="45" id="hT0-rk-0qH"/>
                             <constraint firstItem="fu6-ea-3AU" firstAttribute="trailing" secondItem="g02-ut-QPV" secondAttribute="trailing" constant="20" id="jWq-MJ-VF6"/>
                             <constraint firstItem="fu6-ea-3AU" firstAttribute="trailing" secondItem="t87-tq-pVp" secondAttribute="trailing" constant="20" id="nrG-8K-vFl"/>
                             <constraint firstItem="g02-ut-QPV" firstAttribute="top" secondItem="fu6-ea-3AU" secondAttribute="top" constant="15" id="u24-29-Kdw"/>
@@ -194,6 +209,21 @@
                 <exit id="hs5-xC-vxb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="855.20000000000005" y="28.335832083958024"/>
+        </scene>
+        <!--PlayfieldVC-->
+        <scene sceneID="4em-uA-Tp5">
+            <objects>
+                <viewController id="kkl-ya-7bW" customClass="PlayfieldVC" customModule="Gridy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="s4W-Wl-dsi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="yDZ-aU-1JR"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wnj-gx-oIL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1693" y="25"/>
         </scene>
     </scenes>
     <resources>
