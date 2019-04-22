@@ -18,17 +18,29 @@ class FramingVC: UIViewController, UIGestureRecognizerDelegate {
     // UIView to define the primeter in which the game image will be cropped at
     @IBOutlet weak var captureArea: UIView!
     // Background Image to display grid
-    @IBOutlet weak var GridBackground: UIImageView!
+    @IBOutlet weak var gridBackground: UIImageView!
+    // Outlet for Start Button
+    @IBOutlet weak var startButton: UIButton!
+    
     
     
     // :: Buttons ::
     
-    @IBAction func CancelButton(_ sender: Any) {
+    // Cancel Button top right of screen - unwind to HomeVC
+    @IBAction func cancelButton(_ sender: Any) {
         print("\no<-X CancelButton()")
         
-        // remove current image 
+        // remove current image
         selectedImageView.image = nil
-        
+    }
+    
+    
+    // Action Outlet for the start button - slice images, go to PlayfieldVC
+    @IBAction func startButtonPressed(_ sender: Any) {
+        // Go to PlayfieldVC
+        print("-> GoToPlayfieldVC")
+        // Slice Image
+        print("~x~ SliceImage()")
     }
     
     
@@ -106,13 +118,15 @@ class FramingVC: UIViewController, UIGestureRecognizerDelegate {
     func configureFramingView() {
         
         // disable interaction with grid image
-        GridBackground.isUserInteractionEnabled = false
+        gridBackground.isUserInteractionEnabled = false
         
         // assigning selected || taken photo to the imageView
         selectedImageView.image = imageHolder2
         // enable interaction with ImageView
         selectedImageView.isUserInteractionEnabled = true
     
+        // rounding edges to start button 
+        startButton.layer.cornerRadius = 12
         
         // pan gesture recognizer
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(moveImageView(_:)))

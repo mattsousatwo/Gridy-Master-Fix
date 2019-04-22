@@ -53,8 +53,8 @@
 		6152450421AC1EDD00AEDDC1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				613459E3226D9B370062F67C /* FramingVC.swift */,
 				618C741721AF341D003A62D2 /* HomeVC.swift */,
+				613459E3226D9B370062F67C /* FramingVC.swift */,
 				6196C37C226DB0D50018BCC2 /* PlayfieldVC.swift */,
 			);
 			name = Controller;

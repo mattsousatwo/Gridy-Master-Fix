@@ -152,7 +152,7 @@
                                 <rect key="frame" x="330" y="35" width="25" height="22"/>
                                 <state key="normal" backgroundImage="Gridy-X"/>
                                 <connections>
-                                    <action selector="CancelButton:" destination="vHn-lZ-KSN" eventType="touchUpInside" id="T3b-jQ-FcM"/>
+                                    <action selector="cancelButton:" destination="vHn-lZ-KSN" eventType="touchUpInside" id="vrw-yg-QeT"/>
                                     <segue destination="hs5-xC-vxb" kind="unwind" unwindAction="unwindToHomeWithUnwindSegue:" id="9Ui-RR-HYh"/>
                                 </connections>
                             </button>
@@ -170,6 +170,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="startButtonPressed:" destination="vHn-lZ-KSN" eventType="touchUpInside" id="3SE-Rf-hxu"/>
                                     <segue destination="kkl-ya-7bW" kind="presentation" identifier="FramingToPlayfield" id="im1-DX-pOg"/>
                                 </connections>
                             </button>
@@ -200,9 +201,10 @@
                         <viewLayoutGuide key="safeArea" id="fu6-ea-3AU"/>
                     </view>
                     <connections>
-                        <outlet property="GridBackground" destination="ihZ-GW-Ued" id="Cbh-WF-22R"/>
                         <outlet property="captureArea" destination="t87-tq-pVp" id="R6m-TB-9q0"/>
+                        <outlet property="gridBackground" destination="ihZ-GW-Ued" id="7HG-Ht-aa2"/>
                         <outlet property="selectedImageView" destination="M0Z-DJ-ivQ" id="rG2-aa-yqY"/>
+                        <outlet property="startButton" destination="5Gk-bU-SCy" id="X7H-pk-Kfv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uwj-DB-SZy" userLabel="First Responder" sceneMemberID="firstResponder"/>

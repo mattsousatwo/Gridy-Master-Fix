@@ -218,7 +218,7 @@ class HomeVC: UIViewController, UINavigationControllerDelegate, UIImagePickerCon
     
     // Segue to come back to HomeVC
     @IBAction func unwindToHome(unwindSegue: UIStoryboardSegue) {
-        print("^ Back To HomeVC")
+        print(" || Back to HomeVC")
     }
     
 
