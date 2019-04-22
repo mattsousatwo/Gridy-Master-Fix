@@ -10,6 +10,15 @@ import UIKit
 
 class PlayfieldVC: UIViewController {
 
+    
+    // :: Buttons ::
+    // New Game button - Cancel, go back to HomeVC
+    @IBAction func newGamePressed(_ sender: Any) {
+        print("\no<-X newGamePressed()")
+        
+        // remove current game image 
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

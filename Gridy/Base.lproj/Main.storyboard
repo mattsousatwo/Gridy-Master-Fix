@@ -219,11 +219,31 @@
                     <view key="view" contentMode="scaleToFill" id="s4W-Wl-dsi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ftp-A5-31W">
+                                <rect key="frame" x="10" y="25" width="265" height="35"/>
+                                <color key="backgroundColor" red="0.53166013960000003" green="0.83183425659999999" blue="0.59627997880000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
+                                <state key="normal" title="New Game">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="newGamePressed:" destination="kkl-ya-7bW" eventType="touchUpInside" id="ZHY-Rs-fwF"/>
+                                    <segue destination="9Kn-Sa-zzk" kind="unwind" unwindAction="unwindToHomeWithUnwindSegue:" id="jM8-fw-yOc"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ftp-A5-31W" firstAttribute="leading" secondItem="yDZ-aU-1JR" secondAttribute="leading" constant="10" id="2c7-h9-mdL"/>
+                            <constraint firstItem="ftp-A5-31W" firstAttribute="top" secondItem="yDZ-aU-1JR" secondAttribute="top" constant="5" id="Bmc-pF-ErS"/>
+                            <constraint firstItem="yDZ-aU-1JR" firstAttribute="trailing" secondItem="ftp-A5-31W" secondAttribute="trailing" constant="100" id="Cob-9q-7eO"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="yDZ-aU-1JR"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wnj-gx-oIL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="9Kn-Sa-zzk" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1693" y="25"/>
         </scene>
