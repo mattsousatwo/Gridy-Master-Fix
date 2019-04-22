@@ -156,6 +156,12 @@
                                     <segue destination="hs5-xC-vxb" kind="unwind" unwindAction="unwindToHomeWithUnwindSegue:" id="9Ui-RR-HYh"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adjust Puzzle Image: Zoom, Resize, Rotate" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDu-Qh-EFn">
+                                <rect key="frame" x="85" y="75" width="205" height="68"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
+                                <color key="textColor" red="0.2826996148" green="0.2710390687" blue="0.2417342663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -163,14 +169,18 @@
                             <constraint firstItem="ihZ-GW-Ued" firstAttribute="leading" secondItem="fu6-ea-3AU" secondAttribute="leading" id="96F-1R-Qys"/>
                             <constraint firstItem="t87-tq-pVp" firstAttribute="top" secondItem="fu6-ea-3AU" secondAttribute="top" constant="141" id="Ahu-B5-BEY"/>
                             <constraint firstItem="g02-ut-QPV" firstAttribute="leading" secondItem="fu6-ea-3AU" secondAttribute="leading" constant="330" id="CkR-6e-NOn"/>
+                            <constraint firstItem="iDu-Qh-EFn" firstAttribute="top" secondItem="fu6-ea-3AU" secondAttribute="top" constant="55" id="D2J-Qu-7jq"/>
                             <constraint firstItem="ihZ-GW-Ued" firstAttribute="trailing" secondItem="fu6-ea-3AU" secondAttribute="trailing" id="PZA-dN-3Hr"/>
+                            <constraint firstItem="t87-tq-pVp" firstAttribute="top" secondItem="iDu-Qh-EFn" secondAttribute="bottom" constant="18" id="RN5-5S-yr1"/>
                             <constraint firstItem="t87-tq-pVp" firstAttribute="top" secondItem="g02-ut-QPV" secondAttribute="bottom" constant="104" id="SVC-zK-acj"/>
                             <constraint firstItem="ihZ-GW-Ued" firstAttribute="bottom" secondItem="fu6-ea-3AU" secondAttribute="bottom" id="ZIg-sS-ioP"/>
+                            <constraint firstItem="fu6-ea-3AU" firstAttribute="trailing" secondItem="iDu-Qh-EFn" secondAttribute="trailing" constant="85" id="Zwa-i1-YOs"/>
                             <constraint firstItem="fu6-ea-3AU" firstAttribute="bottom" secondItem="t87-tq-pVp" secondAttribute="bottom" constant="161" id="g0y-Jv-ILC"/>
                             <constraint firstItem="ihZ-GW-Ued" firstAttribute="top" secondItem="MKO-sI-FnU" secondAttribute="top" id="hRP-uO-drI"/>
                             <constraint firstItem="fu6-ea-3AU" firstAttribute="trailing" secondItem="g02-ut-QPV" secondAttribute="trailing" constant="20" id="jWq-MJ-VF6"/>
                             <constraint firstItem="fu6-ea-3AU" firstAttribute="trailing" secondItem="t87-tq-pVp" secondAttribute="trailing" constant="20" id="nrG-8K-vFl"/>
                             <constraint firstItem="g02-ut-QPV" firstAttribute="top" secondItem="fu6-ea-3AU" secondAttribute="top" constant="15" id="u24-29-Kdw"/>
+                            <constraint firstItem="iDu-Qh-EFn" firstAttribute="leading" secondItem="fu6-ea-3AU" secondAttribute="leading" constant="85" id="yvD-du-Naz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fu6-ea-3AU"/>
                     </view>

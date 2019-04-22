@@ -26,7 +26,8 @@ class FramingVC: UIViewController, UIGestureRecognizerDelegate {
     @IBAction func CancelButton(_ sender: Any) {
         print("\no<-X CancelButton()")
         
-        
+        // remove current image 
+        selectedImageView.image = nil
         
     }
     
