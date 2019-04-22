@@ -15,15 +15,13 @@ class FramingVC: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var selectedImageView: UIImageView!
     
+    @IBOutlet weak var captureArea: UIView!
     
-    // Not working - doesnt seem like gesture recognizers are picking up 
     
-    //  -  SET UP FOR MOVING ROTATING AND SCALING SELECTEDIMAGEVIEW -
-    // 3.1 Add UIGestureRecognizerDelegate inheritance
-    // 3.2 Add initialImageViewOffset Value: CGPoint()
-    // 3.3 Add Pan, Rotate, and Pinch Gesture functions in FramingVC Class
-    // 3.4 Add simultanious gesture recognizor
-    // 3.5 Add Pan, Rotate, and Pinch Gesture recognizers in viewDidLoad()
+    
+    
+    
+    // :: Gestures ::
     
     // storing inital position of image in selectedImageView as a variable
     var initalImageViewOffset = CGPoint()
@@ -93,13 +91,14 @@ class FramingVC: UIViewController, UIGestureRecognizerDelegate {
         return true
     }
     
+    // Set up FramingViewController ; apply gestures to image view
     func configureFramingView() {
         
         // assigning selected || taken photo to the imageView
         selectedImageView.image = imageHolder2
-        
+        // enable interaction with ImageView
         selectedImageView.isUserInteractionEnabled = true
-        print("\n\ninteraction set to true ")
+    
         
         // pan gesture recognizer
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(moveImageView(_:)))
