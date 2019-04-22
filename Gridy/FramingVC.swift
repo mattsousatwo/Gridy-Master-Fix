@@ -13,10 +13,12 @@ class FramingVC: UIViewController, UIGestureRecognizerDelegate {
     // image variable to store a picked image from the previous view
     var imageHolder2 = UIImage() 
     
+    // UIImageView inside captureArea to display chosen game image
     @IBOutlet weak var selectedImageView: UIImageView!
-    
+    // UIView to define the primeter in which the game image will be cropped at
     @IBOutlet weak var captureArea: UIView!
-    
+    // Background Image to display grid
+    @IBOutlet weak var GridBackground: UIImageView!
     
     
     
@@ -93,6 +95,9 @@ class FramingVC: UIViewController, UIGestureRecognizerDelegate {
     
     // Set up FramingViewController ; apply gestures to image view
     func configureFramingView() {
+        
+        // disable interaction with grid image
+        GridBackground.isUserInteractionEnabled = false
         
         // assigning selected || taken photo to the imageView
         selectedImageView.image = imageHolder2

@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="Gridy-name-large-green" translatesAutoresizingMaskIntoConstraints="NO" id="7l9-YW-Adj">
-                                <rect key="frame" x="179.5" y="70" width="16" height="160"/>
+                                <rect key="frame" x="22.5" y="70" width="330" height="160"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- OR load your own - " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qt7-eO-RMd">
                                 <rect key="frame" x="106" y="467" width="163.5" height="21"/>
@@ -27,7 +27,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge yourself with a photo puzzle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5T-Z1-JPx">
-                                <rect key="frame" x="196" y="215" width="265" height="18"/>
+                                <rect key="frame" x="39" y="215" width="265" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.28662103410000001" green="0.2749612629" blue="0.2456566691" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -130,20 +130,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M0Z-DJ-ivQ">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t87-tq-pVp">
                                 <rect key="frame" x="20" y="161" width="335" height="345"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M0Z-DJ-ivQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="345"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.77458798890000002" green="0.85299998519999998" blue="0.74942666290000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="M0Z-DJ-ivQ" firstAttribute="top" secondItem="t87-tq-pVp" secondAttribute="top" id="AOF-Wg-m3w"/>
+                                    <constraint firstItem="M0Z-DJ-ivQ" firstAttribute="leading" secondItem="t87-tq-pVp" secondAttribute="leading" id="IVx-ef-bhQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="M0Z-DJ-ivQ" secondAttribute="bottom" id="MLo-sV-n8g"/>
+                                    <constraint firstAttribute="trailing" secondItem="M0Z-DJ-ivQ" secondAttribute="trailing" id="ShC-GY-VKA"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Gridy_Trans_BG" translatesAutoresizingMaskIntoConstraints="NO" id="ihZ-GW-Ued">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="fu6-ea-3AU" firstAttribute="bottom" secondItem="M0Z-DJ-ivQ" secondAttribute="bottom" constant="161" id="1IW-LQ-Mw4"/>
-                            <constraint firstItem="M0Z-DJ-ivQ" firstAttribute="leading" secondItem="fu6-ea-3AU" secondAttribute="leading" constant="20" id="Heh-Qx-r28"/>
-                            <constraint firstItem="M0Z-DJ-ivQ" firstAttribute="top" secondItem="fu6-ea-3AU" secondAttribute="top" constant="141" id="Obw-Fw-a0Q"/>
-                            <constraint firstItem="fu6-ea-3AU" firstAttribute="trailing" secondItem="M0Z-DJ-ivQ" secondAttribute="trailing" constant="20" id="XEF-4p-HvR"/>
+                            <constraint firstItem="t87-tq-pVp" firstAttribute="leading" secondItem="fu6-ea-3AU" secondAttribute="leading" constant="20" id="7Ld-s5-Ejt"/>
+                            <constraint firstItem="ihZ-GW-Ued" firstAttribute="leading" secondItem="fu6-ea-3AU" secondAttribute="leading" id="96F-1R-Qys"/>
+                            <constraint firstItem="t87-tq-pVp" firstAttribute="top" secondItem="fu6-ea-3AU" secondAttribute="top" constant="141" id="Ahu-B5-BEY"/>
+                            <constraint firstItem="ihZ-GW-Ued" firstAttribute="trailing" secondItem="fu6-ea-3AU" secondAttribute="trailing" id="PZA-dN-3Hr"/>
+                            <constraint firstItem="ihZ-GW-Ued" firstAttribute="bottom" secondItem="fu6-ea-3AU" secondAttribute="bottom" id="ZIg-sS-ioP"/>
+                            <constraint firstItem="fu6-ea-3AU" firstAttribute="bottom" secondItem="t87-tq-pVp" secondAttribute="bottom" constant="161" id="g0y-Jv-ILC"/>
+                            <constraint firstItem="ihZ-GW-Ued" firstAttribute="top" secondItem="MKO-sI-FnU" secondAttribute="top" id="hRP-uO-drI"/>
+                            <constraint firstItem="fu6-ea-3AU" firstAttribute="trailing" secondItem="t87-tq-pVp" secondAttribute="trailing" constant="20" id="nrG-8K-vFl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fu6-ea-3AU"/>
                     </view>
                     <connections>
+                        <outlet property="GridBackground" destination="ihZ-GW-Ued" id="Cbh-WF-22R"/>
+                        <outlet property="captureArea" destination="t87-tq-pVp" id="R6m-TB-9q0"/>
                         <outlet property="selectedImageView" destination="M0Z-DJ-ivQ" id="rG2-aa-yqY"/>
                     </connections>
                 </viewController>
@@ -157,6 +178,7 @@
         <image name="Gridy-library" width="36" height="28"/>
         <image name="Gridy-name-large-green" width="330" height="160"/>
         <image name="Gridy-name-small-grey" width="70" height="34"/>
+        <image name="Gridy_Trans_BG" width="375" height="667"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="LdM-zR-tqU"/>
