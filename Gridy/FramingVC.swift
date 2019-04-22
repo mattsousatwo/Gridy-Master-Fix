@@ -21,6 +21,14 @@ class FramingVC: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var GridBackground: UIImageView!
     
     
+    // :: Buttons ::
+    
+    @IBAction func CancelButton(_ sender: Any) {
+        print("\no<-X CancelButton()")
+        
+        
+        
+    }
     
     
     // :: Gestures ::

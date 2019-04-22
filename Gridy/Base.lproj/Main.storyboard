@@ -148,17 +148,29 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Gridy_Trans_BG" translatesAutoresizingMaskIntoConstraints="NO" id="ihZ-GW-Ued">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g02-ut-QPV">
+                                <rect key="frame" x="330" y="35" width="25" height="22"/>
+                                <state key="normal" backgroundImage="Gridy-X"/>
+                                <connections>
+                                    <action selector="CancelButton:" destination="vHn-lZ-KSN" eventType="touchUpInside" id="T3b-jQ-FcM"/>
+                                    <segue destination="hs5-xC-vxb" kind="unwind" unwindAction="unwindToHomeWithUnwindSegue:" id="9Ui-RR-HYh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="t87-tq-pVp" firstAttribute="leading" secondItem="fu6-ea-3AU" secondAttribute="leading" constant="20" id="7Ld-s5-Ejt"/>
                             <constraint firstItem="ihZ-GW-Ued" firstAttribute="leading" secondItem="fu6-ea-3AU" secondAttribute="leading" id="96F-1R-Qys"/>
                             <constraint firstItem="t87-tq-pVp" firstAttribute="top" secondItem="fu6-ea-3AU" secondAttribute="top" constant="141" id="Ahu-B5-BEY"/>
+                            <constraint firstItem="g02-ut-QPV" firstAttribute="leading" secondItem="fu6-ea-3AU" secondAttribute="leading" constant="330" id="CkR-6e-NOn"/>
                             <constraint firstItem="ihZ-GW-Ued" firstAttribute="trailing" secondItem="fu6-ea-3AU" secondAttribute="trailing" id="PZA-dN-3Hr"/>
+                            <constraint firstItem="t87-tq-pVp" firstAttribute="top" secondItem="g02-ut-QPV" secondAttribute="bottom" constant="104" id="SVC-zK-acj"/>
                             <constraint firstItem="ihZ-GW-Ued" firstAttribute="bottom" secondItem="fu6-ea-3AU" secondAttribute="bottom" id="ZIg-sS-ioP"/>
                             <constraint firstItem="fu6-ea-3AU" firstAttribute="bottom" secondItem="t87-tq-pVp" secondAttribute="bottom" constant="161" id="g0y-Jv-ILC"/>
                             <constraint firstItem="ihZ-GW-Ued" firstAttribute="top" secondItem="MKO-sI-FnU" secondAttribute="top" id="hRP-uO-drI"/>
+                            <constraint firstItem="fu6-ea-3AU" firstAttribute="trailing" secondItem="g02-ut-QPV" secondAttribute="trailing" constant="20" id="jWq-MJ-VF6"/>
                             <constraint firstItem="fu6-ea-3AU" firstAttribute="trailing" secondItem="t87-tq-pVp" secondAttribute="trailing" constant="20" id="nrG-8K-vFl"/>
+                            <constraint firstItem="g02-ut-QPV" firstAttribute="top" secondItem="fu6-ea-3AU" secondAttribute="top" constant="15" id="u24-29-Kdw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fu6-ea-3AU"/>
                     </view>
@@ -169,11 +181,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uwj-DB-SZy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="hs5-xC-vxb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="855.20000000000005" y="28.335832083958024"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Gridy-X" width="17" height="17"/>
         <image name="Gridy-camera" width="36" height="28"/>
         <image name="Gridy-library" width="36" height="28"/>
         <image name="Gridy-name-large-green" width="330" height="160"/>
