@@ -10,6 +10,7 @@
 		613459E4226D9B370062F67C /* FramingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613459E3226D9B370062F67C /* FramingVC.swift */; };
 		618C741821AF341D003A62D2 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C741721AF341D003A62D2 /* HomeVC.swift */; };
 		6196C37D226DB0D50018BCC2 /* PlayfieldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6196C37C226DB0D50018BCC2 /* PlayfieldVC.swift */; };
+		619ECA75226FAC8200204B09 /* Slicing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619ECA74226FAC8200204B09 /* Slicing.swift */; };
 		61DBA69B219C976E00384503 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DBA69A219C976E00384503 /* AppDelegate.swift */; };
 		61DBA6A0219C976E00384503 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61DBA69E219C976E00384503 /* Main.storyboard */; };
 		61DBA6A2219C976F00384503 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61DBA6A1219C976F00384503 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 		613459E3226D9B370062F67C /* FramingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FramingVC.swift; path = Gridy/FramingVC.swift; sourceTree = "<group>"; };
 		618C741721AF341D003A62D2 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeVC.swift; path = Gridy/HomeVC.swift; sourceTree = "<group>"; };
 		6196C37C226DB0D50018BCC2 /* PlayfieldVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayfieldVC.swift; path = Gridy/PlayfieldVC.swift; sourceTree = "<group>"; };
+		619ECA74226FAC8200204B09 /* Slicing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Slicing.swift; path = Gridy/Slicing.swift; sourceTree = SOURCE_ROOT; };
 		61DBA697219C976E00384503 /* Gridy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gridy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61DBA69A219C976E00384503 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Gridy/AppDelegate.swift; sourceTree = "<group>"; };
 		61DBA69F219C976E00384503 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 		6152450621AC1F0300AEDDC1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				619ECA74226FAC8200204B09 /* Slicing.swift */,
 			);
 			name = Model;
 			path = Gridy/Model;
@@ -178,6 +181,7 @@
 				61DBA69B219C976E00384503 /* AppDelegate.swift in Sources */,
 				613459E4226D9B370062F67C /* FramingVC.swift in Sources */,
 				6196C37D226DB0D50018BCC2 /* PlayfieldVC.swift in Sources */,
+				619ECA75226FAC8200204B09 /* Slicing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
