@@ -437,6 +437,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yDZ-aU-1JR"/>
                     </view>
+                    <connections>
+                        <outlet property="hintButton" destination="naK-Qg-WI0" id="Vv4-2y-JZd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wnj-gx-oIL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="9Kn-Sa-zzk" userLabel="Exit" sceneMemberID="exit"/>

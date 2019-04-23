@@ -8,12 +8,17 @@
 
 import UIKit
 
-class PlayfieldVC: UIViewController {
+class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
 
     // :: Variables ::
     
     let slicing = Slicing()
     
+    
+    
+    // :: Outlets ::
+    // Eye Image to display Hint Image
+    @IBOutlet weak var hintButton: UIImageView!
     
     
     // :: Buttons ::
@@ -25,9 +30,37 @@ class PlayfieldVC: UIViewController {
         
     }
     
+    // Func to display hint image
+    @objc func showHint(_ sender: UITapGestureRecognizer) {
+        print(" ^%^ Show Hint")
+    }
+    
+    
+    // :: Gesture Recognizers ::
+    func addTapGesture() {
+        // Creating TapGestureRecognizer to trigger when showHint should be activated
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showHint(_:)))
+        // Adding gesture recognizer to hintButton
+        hintButton.addGestureRecognizer(tapGesture)
+        // setting gesture delegate to self
+        tapGesture.delegate = self
+    }
+    
+    
+    
+    // :: View Configuration ::
+    func configurePlayfield() {
+        
+        // adding tap gesture to hint button
+        addTapGesture()
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        configurePlayfield()
         // Do any additional setup after loading the view.
     }
     
