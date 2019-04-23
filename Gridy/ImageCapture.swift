@@ -18,7 +18,5 @@ struct ImageCapture {
         UIGraphicsEndImageContext()
         return screenshot
     }
-    
-    
-    
+
 }

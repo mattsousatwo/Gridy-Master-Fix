@@ -10,13 +10,19 @@ import UIKit
 
 class PlayfieldVC: UIViewController {
 
+    // :: Variables ::
+    
+    let slicing = Slicing()
+    
+    
     
     // :: Buttons ::
     // New Game button - Cancel, go back to HomeVC
     @IBAction func newGamePressed(_ sender: Any) {
         print("\no<-X newGamePressed()")
         
-        // remove current game image 
+        // remove current game image
+        
     }
     
     override func viewDidLoad() {

@@ -10,11 +10,11 @@ import UIKit
 
 struct Slicing {
     
-    // property to hold sliced images for tiles
+    // variable to hold sliced images for tiles
     var slicedImageArray: [UIImage] = []
     
     // create an array of slices from an image using the desired amount of columns and rows, then store that array inside another array
-    func sliceImage(for image: UIImage, row: Int, column: Int) -> [UIImage] {
+    mutating func sliceImage(for image: UIImage, row: Int, column: Int) {
         
         // divide image height by number of rows as! CGFloat
         let height = (image.size.height) / CGFloat (row)
@@ -53,7 +53,7 @@ struct Slicing {
         }
         
         // return imageArray
-        return imageArray
+        slicedImageArray = imageArray
         
     }
     
