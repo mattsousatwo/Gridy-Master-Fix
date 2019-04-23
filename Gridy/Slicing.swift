@@ -57,15 +57,15 @@ struct Slicing {
         
     }
     
-    // Remove Images from Array
-    func removeImages(from images: inout [UIImage]) {
-        if images.count != 0 {
-            print("removing slices for new image \n")
-            images.removeAll()
+    // Remove Images from slicedImageArray
+    mutating func removeImages() {
+        if slicedImageArray.count != 0 {
+            print("[*] removing slices from slicedImageArray \n")
+            slicedImageArray.removeAll()
             
         } else {
             
-            print("imageArray.count = 0 \n")
+            print("-- slicedImageArray.count = 0 \n")
             
         }
     }
