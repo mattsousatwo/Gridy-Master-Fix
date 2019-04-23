@@ -13,13 +13,13 @@ struct ImageCapture {
     var gameImage = UIImage()
     
     // Take a screenshot of the contents of a specified UIView
-    mutating func captureImage(from: UIView ) {
+    mutating func captureImage(from: UIView ) -> UIImage {
         print("~[Capture Image]~")
         UIGraphicsBeginImageContextWithOptions(from.bounds.size, false, 0)
         from.drawHierarchy(in: from.bounds, afterScreenUpdates: true)
-        gameImage = UIGraphicsGetImageFromCurrentImageContext()!
+        let screenshot = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        
+        return screenshot
         
     }
 

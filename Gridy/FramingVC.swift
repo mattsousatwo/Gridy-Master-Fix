@@ -18,6 +18,7 @@ class FramingVC: UIViewController, UIGestureRecognizerDelegate {
     // referencing to class
     var capture = ImageCapture()
     
+    var image = UIImage()
     
     // :: Outlets ::
     // UIImageView inside captureArea to display chosen game image
@@ -48,11 +49,11 @@ class FramingVC: UIViewController, UIGestureRecognizerDelegate {
         print("-> GoToPlayfieldVC")
         
         // Capture Image from captureArea
-        capture.captureImage(from: captureArea)
+        image = capture.captureImage(from: captureArea)
         
         // Slice Image
         print("~x~ SliceImage()")
-        slicing.sliceImage(for: capture.gameImage, row: 4, column: 4)
+        slicing.sliceImage(for: image, row: 4, column: 4)
         
     }
     
@@ -174,6 +175,16 @@ class FramingVC: UIViewController, UIGestureRecognizerDelegate {
         
         // Do any additional setup after loading the view.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let nextVC = segue.destination as! PlayfieldVC
+        nextVC.gameImage = image 
+        
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    
     
 
     /*
