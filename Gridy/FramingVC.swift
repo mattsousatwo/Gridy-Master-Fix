@@ -10,9 +10,16 @@ import UIKit
 
 class FramingVC: UIViewController, UIGestureRecognizerDelegate {
     
+    // :: Variables ::
     // image variable to store a picked image from the previous view
     var imageHolder2 = UIImage() 
+    // referencing to class
+    var slicing = Slicing()
+    // referencing to class
+    var capture = ImageCapture()
     
+    
+    // :: Outlets ::
     // UIImageView inside captureArea to display chosen game image
     @IBOutlet weak var selectedImageView: UIImageView!
     // UIView to define the primeter in which the game image will be cropped at
@@ -39,8 +46,14 @@ class FramingVC: UIViewController, UIGestureRecognizerDelegate {
     @IBAction func startButtonPressed(_ sender: Any) {
         // Go to PlayfieldVC
         print("-> GoToPlayfieldVC")
+        
+        // Capture Image from captureArea
+        capture.captureImage(from: captureArea)
+        
         // Slice Image
         print("~x~ SliceImage()")
+        slicing.sliceImage(for: capture.gameImage, row: 4, column: 4)
+        
     }
     
     

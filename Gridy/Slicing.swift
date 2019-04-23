@@ -24,7 +24,7 @@ struct Slicing {
         let scale = (image.scale)
         
         // empty array of arrays of images
-        var imageArray = [UIImage]()
+         //imageArray = [UIImage]()
         
         // for each in 0 ... number of rows
         for y in 0..<row {
@@ -43,7 +43,8 @@ struct Slicing {
                 let newImage = UIImage.init(cgImage: i!)
                 
                 // add newImage to yArray
-                imageArray.append(newImage)
+                // imageArray.append(newImage)
+                slicedImageArray.append(newImage)
                 
                 // end drawing image
                 UIGraphicsEndImageContext();
@@ -51,10 +52,8 @@ struct Slicing {
             }
             
         }
-        
         // return imageArray
-        slicedImageArray = imageArray
-        
+        print("[\(slicedImageArray.count)]<- returning sliced images")
     }
     
     // Remove Images from slicedImageArray
