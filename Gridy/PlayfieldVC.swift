@@ -11,7 +11,6 @@ import UIKit
 class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
 
     // :: Variables ::
-    
     let slicing = Slicing()
     
     
