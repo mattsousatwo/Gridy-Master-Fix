@@ -10,12 +10,18 @@ import UIKit
 
 class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
 
-    // :: Variables ::
-    var gameImage = UIImage()
-    
+    // :: Class Reference ::
     let slicing = Slicing()
     
     let capture = ImageCapture()
+    
+    let manager = GameManager()
+    
+    // :: Variables ::
+    // GameImage To be used for hint display
+    var gameImage = UIImage()
+    // Container of Sliced Images sent over from FramingVC
+    var slicedImages = [UIImage]()
     
     
     // :: Outlets ::
@@ -35,13 +41,9 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     // Func to display hint image
     @objc func showHint(_ sender: UITapGestureRecognizer) {
         print(" ^%^ Show Hint")
-        let previewImageView = UIView()
-        let imageView = UIImageView()
+        
         // add onto number of times hint has been pressed
       //  gameStructure.hintCounter += 1
-        
-        // set game image to the preview imageView
-        imageView.image = gameImage
         
         // add blur view
         let blur = UIVisualEffectView()
@@ -49,13 +51,20 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         blur.effect = UIBlurEffect(style: .regular)
         self.view.addSubview(blur)
         
+        // Game Image height & width for frame sizing
+        let imgWidth = gameImage.size.width
+        let imgHeight = gameImage.size.height
+       
+        // set frame
+        let previewImageView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: imgWidth + 25, height: imgHeight + 25))
+        let imageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: imgWidth, height: imgHeight))
         
         // add view
         self.view.addSubview(previewImageView)
         previewImageView.addSubview(imageView)
-        // set frame
-        previewImageView.frame = CGRect(x: 0.0, y: 0.0, width: gameImage.size.width + 25, height: gameImage.size.height + 25)
-        imageView.frame = CGRect(x: 0.0, y: 0.0, width: gameImage.size.width, height: gameImage.size.height)
+        
+        // set game image to the preview imageView
+        imageView.image = gameImage
         
         // set frame attributes
         previewImageView.layer.cornerRadius = 10
@@ -79,17 +88,14 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
             
             // move previewImageView off screen
             previewImageView.center = CGPoint(x: self.view.center.x + (self.view.frame.width * 2), y: self.view.center.y)
+            
             // remove blurView
             blur.effect = nil
             blur.isUserInteractionEnabled = false
+            
         }, completion: { (success) in })
         
-        
-        
-        
         print("Show Hint")
-        
-        
         
     }
     
@@ -115,11 +121,25 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     
     
     
+    // ------ CAN DELETE ----
+    func checkSlices() {
+        // if tiles array != 0
+        guard slicedImages.count != 0 else {
+            print("\n ----- there are no tiles -> 0")
+            return
+        }
+            // print array amount
+            print("\n ----- tilesArray.count = \(slicedImages.count)")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        checkSlices()
+        
         configurePlayfield()
         // Do any additional setup after loading the view.
+        
     }
     
 

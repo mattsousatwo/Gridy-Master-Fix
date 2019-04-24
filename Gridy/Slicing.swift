@@ -14,7 +14,9 @@ struct Slicing {
     var slicedImageArray: [UIImage] = []
     
     // create an array of slices from an image using the desired amount of columns and rows, then store that array inside another array
-    mutating func sliceImage(for image: UIImage, row: Int, column: Int) {
+    func sliceImage(for image: UIImage) -> [UIImage] {
+        let row = 4
+        let column = 4
         
         // divide image height by number of rows as! CGFloat
         let height = (image.size.height) / CGFloat (row)
@@ -24,7 +26,7 @@ struct Slicing {
         let scale = (image.scale)
         
         // empty array of arrays of images
-         //imageArray = [UIImage]()
+        var imageArray = [UIImage]()
         
         // for each in 0 ... number of rows
         for y in 0..<row {
@@ -43,8 +45,9 @@ struct Slicing {
                 let newImage = UIImage.init(cgImage: i!)
                 
                 // add newImage to yArray
-                // imageArray.append(newImage)
-                slicedImageArray.append(newImage)
+                imageArray.append(newImage)
+                
+                
                 
                 // end drawing image
                 UIGraphicsEndImageContext();
@@ -53,7 +56,8 @@ struct Slicing {
             
         }
         // return imageArray
-        print("[\(slicedImageArray.count)]<- returning sliced images")
+        print("[\(imageArray.count)]<- returning sliced images")
+        return imageArray
     }
     
     // Remove Images from slicedImageArray

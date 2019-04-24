@@ -10,10 +10,8 @@ import UIKit
 
 struct ImageCapture {
     
-    var gameImage = UIImage()
-    
     // Take a screenshot of the contents of a specified UIView
-    mutating func captureImage(from: UIView ) -> UIImage {
+    func captureImage(from: UIView ) -> UIImage {
         print("~[Capture Image]~")
         UIGraphicsBeginImageContextWithOptions(from.bounds.size, false, 0)
         from.drawHierarchy(in: from.bounds, afterScreenUpdates: true)
@@ -22,5 +20,7 @@ struct ImageCapture {
         return screenshot
         
     }
+    
+    
 
 }

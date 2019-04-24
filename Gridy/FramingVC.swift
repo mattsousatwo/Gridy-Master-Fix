@@ -10,14 +10,18 @@ import UIKit
 
 class FramingVC: UIViewController, UIGestureRecognizerDelegate {
     
+    // :: Class Reference ::
+    // To cut up the game image into smaller slices
+    var slicing = Slicing()
+    // Screenshot capabilities
+    var capture = ImageCapture() 
+    
     // :: Variables ::
     // image variable to store a picked image from the previous view
-    var imageHolder2 = UIImage() 
-    // referencing to class
-    var slicing = Slicing()
-    // referencing to class
-    var capture = ImageCapture()
-    
+    var imageHolder2 = UIImage()
+    // Container for Slices from game image - sent over to PlayfieldVC
+    var imageArray = [UIImage]()
+    // The image taken from the captureArea
     var image = UIImage()
     
     // :: Outlets ::
@@ -43,19 +47,20 @@ class FramingVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     
-    // Action Outlet for the start button - slice images, go to PlayfieldVC
+    // Action Outlet for the start button - take image, slice image, go to PlayfieldVC
     @IBAction func startButtonPressed(_ sender: Any) {
-        // Go to PlayfieldVC
-        print("-> GoToPlayfieldVC")
-        
         // Capture Image from captureArea
         image = capture.captureImage(from: captureArea)
         
         // Slice Image
         print("~x~ SliceImage()")
-        slicing.sliceImage(for: image, row: 4, column: 4)
+        imageArray = slicing.sliceImage(for: image)
+        print("\n$ image array count\(imageArray.count)\n")
         
-    }
+        // Go to PlayfieldVC
+        print("-> GoToPlayfieldVC")
+        performSegue(withIdentifier: "FramingToPlayfield", sender: self)
+    } 
     
     
     // :: Gestures ::
@@ -176,26 +181,16 @@ class FramingVC: UIViewController, UIGestureRecognizerDelegate {
         // Do any additional setup after loading the view.
     }
     
+    
+    // Passing Data to the next ViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+
         let nextVC = segue.destination as! PlayfieldVC
-        nextVC.gameImage = image 
-        
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        // Send GameImage over to PlayfieldVC
+        nextVC.gameImage = image
+        nextVC.slicedImages = imageArray
     }
-    */
 
 }   
 

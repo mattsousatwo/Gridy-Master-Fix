@@ -172,7 +172,6 @@
                                 </state>
                                 <connections>
                                     <action selector="startButtonPressed:" destination="vHn-lZ-KSN" eventType="touchUpInside" id="3SE-Rf-hxu"/>
-                                    <segue destination="kkl-ya-7bW" kind="presentation" identifier="FramingToPlayfield" id="im1-DX-pOg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -206,6 +205,7 @@
                         <outlet property="gridBackground" destination="ihZ-GW-Ued" id="7HG-Ht-aa2"/>
                         <outlet property="selectedImageView" destination="M0Z-DJ-ivQ" id="rG2-aa-yqY"/>
                         <outlet property="startButton" destination="5Gk-bU-SCy" id="X7H-pk-Kfv"/>
+                        <segue destination="kkl-ya-7bW" kind="presentation" identifier="FramingToPlayfield" id="eeB-Nn-4mz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uwj-DB-SZy" userLabel="First Responder" sceneMemberID="firstResponder"/>
