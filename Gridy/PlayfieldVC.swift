@@ -15,6 +15,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     let capture = ImageCapture()
     let manager = GameManager()
     var distributor = TileDistribution()
+    let grid = GridPlacement()
     
     // :: Variables ::
     // GameImage To be used for hint display
@@ -23,6 +24,10 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     var slicedImages = [UIImage]()
     // Point used for comparision in moveTile to pan the image on screen
     var tileStartingPoint = CGPoint()
+    // Container to hold All tiles created - to be used to get positions of tiles from / checking for game completion
+    var tileContainer = [Tile]()
+    // Container to store the positions of all tiles in use
+    var tilePositions = [CGPoint]()
     
     
     // :: Outlets ::
@@ -107,8 +112,8 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         
     }
     
-    // Add Game Tiles using a range for each array of smaller images of the game image
-     func addTilesToInitalView(from array: [UIImage]) {
+    // Create Tiles and add tiles to inital Grid
+     func createTiles(from array: [UIImage]) {
         print("\n  -#- Begin Adding Tiles -#-  \n")
         
         let lowInt = 1
@@ -133,7 +138,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
             let tile = Tile(originalTileLocation: shuffledPoint!, correctPosition: (x - 1), frame: tileFrame)
             
             // add to container to then later be checked for gameCompletion
-            distributor.tileContainer.append(tile)
+            tileContainer.append(tile)
             
             // not in correct space by defualt
             tile.isInCorrectPosition = false
@@ -152,6 +157,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         }
         
         print("  -#- Finished Adding Tiles -#-  \n")
+       
     }
     
     
@@ -185,6 +191,39 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         // move tile to movement area
         tile.transform = tile.transform.translatedBy(x: userTargetMovementArea.x, y: userTargetMovementArea.y)
         
+        
+        
+            // If user stops moving tile
+            if gesture.state == .ended {
+               print("\n o stoppedMoving\n")
+                
+                // recognize position in superview
+                let positionInSuperview = gesture.view?.convert(userTargetMovementArea, to: gesture.view?.superview)
+                
+                // creating a boolean value to describe if user is over original grid, and a value to indicate which location that is to then animate the tile position to
+                let (nearOriginalGrid, snapToLocation) = grid.isNearTileBay(finalPosition: positionInSuperview!, positions: tilePositions)
+                
+                    if nearOriginalGrid == true {
+                        print("dropped in inital grid")
+                        
+                        UIView.animate(withDuration: 0.1, animations: {
+                            // bringing tile to closest tile && scaling it to the size of the grid
+                            tile.frame = CGRect(origin: self.tilePositions[snapToLocation], size: CGSize(width: 54, height: 54))
+                        })
+                        
+                    }
+                
+                
+            }
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
     
     // func to easily add gestures to each tile
@@ -203,15 +242,17 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         // getting positions for tile distribution
         distributor.getSubviewPositions(from: initalTileGrid)
         // creating tiles & adding tiles to initalGrid
-        addTilesToInitalView(from: slicedImages)
+        createTiles(from: slicedImages)
     }
     
     func configurePlayfield() {
-        
         // adding tap gesture to hint button
         addTapGesture()
         // adding tiles to playfield
         handleTileCreation()
+        
+        tilePositions = grid.getInitalGridPositions(from: tileContainer)
+        
     }
     
     
@@ -222,6 +263,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         
         configurePlayfield()
         // Do any additional setup after loading the view.
+        
         
     }
     

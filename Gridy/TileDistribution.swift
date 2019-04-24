@@ -9,8 +9,7 @@
 import UIKit
 
 struct TileDistribution {
-    
-    var tileContainer = [Tile]()
+
     // tile size - W: 54, H: 54
     let tileSize = CGFloat(54)
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		61147DAE2270EEFD00FAAA82 /* GridPlacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61147DAD2270EEFD00FAAA82 /* GridPlacement.swift */; };
 		613459E4226D9B370062F67C /* FramingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613459E3226D9B370062F67C /* FramingVC.swift */; };
 		618C741821AF341D003A62D2 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C741721AF341D003A62D2 /* HomeVC.swift */; };
 		6196C37D226DB0D50018BCC2 /* PlayfieldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6196C37C226DB0D50018BCC2 /* PlayfieldVC.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		61147DAD2270EEFD00FAAA82 /* GridPlacement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GridPlacement.swift; path = Gridy/GridPlacement.swift; sourceTree = SOURCE_ROOT; };
 		613459E3226D9B370062F67C /* FramingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FramingVC.swift; path = Gridy/FramingVC.swift; sourceTree = "<group>"; };
 		618C741721AF341D003A62D2 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeVC.swift; path = Gridy/HomeVC.swift; sourceTree = "<group>"; };
 		6196C37C226DB0D50018BCC2 /* PlayfieldVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayfieldVC.swift; path = Gridy/PlayfieldVC.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				619ECA78226FAF7E00204B09 /* TileDistribution.swift */,
 				619ECA7A226FB1E300204B09 /* ImageCapture.swift */,
 				619ECA7C226FD33200204B09 /* GameManager.swift */,
+				61147DAD2270EEFD00FAAA82 /* GridPlacement.swift */,
 			);
 			name = Model;
 			path = Gridy/Model;
@@ -194,6 +197,7 @@
 				61DBA69B219C976E00384503 /* AppDelegate.swift in Sources */,
 				613459E4226D9B370062F67C /* FramingVC.swift in Sources */,
 				619ECA77226FAE8400204B09 /* Tile.swift in Sources */,
+				61147DAE2270EEFD00FAAA82 /* GridPlacement.swift in Sources */,
 				619ECA7B226FB1E300204B09 /* ImageCapture.swift in Sources */,
 				6196C37D226DB0D50018BCC2 /* PlayfieldVC.swift in Sources */,
 				619ECA75226FAC8200204B09 /* Slicing.swift in Sources */,
