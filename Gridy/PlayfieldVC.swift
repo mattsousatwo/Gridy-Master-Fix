@@ -12,10 +12,9 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
 
     // :: Class Reference ::
     let slicing = Slicing()
-    
     let capture = ImageCapture()
-    
     let manager = GameManager()
+    var distributor = TileDistribution()
     
     // :: Variables ::
     // GameImage To be used for hint display
@@ -27,6 +26,15 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     // :: Outlets ::
     // Eye Image to display Hint Image
     @IBOutlet weak var hintButton: UIImageView!
+    
+    @IBOutlet var initalTileGrid: [UIView]!
+    
+    
+    
+    
+    
+    
+    
     
     
     // :: Buttons ::
@@ -54,7 +62,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         // Game Image height & width for frame sizing
         let imgWidth = gameImage.size.width
         let imgHeight = gameImage.size.height
-       
+        
         // set frame
         let previewImageView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: imgWidth + 25, height: imgHeight + 25))
         let imageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: imgWidth, height: imgHeight))
@@ -99,6 +107,51 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         
     }
     
+    // Add Game Tiles using a range for each array of smaller images of the game image
+     func addTilesToInitalView(from array: [UIImage]) {
+        
+        let lowInt = 1
+        let maxInt = 16
+        
+        // using closed range for image selection
+        let closedRange = lowInt...maxInt
+        
+        for x in closedRange {
+            print("adding tiles ")
+            
+            // select image for tile
+            let image = array[x - lowInt]
+            
+            // get a shuffled point from slicing.tileLocations
+            let shuffledPoint = distributor.shuffledTileLocation()
+            
+            // tile frame
+            let tileFrame = CGRect(x: shuffledPoint!.x, y: shuffledPoint!.y, width: distributor.tileSize, height: distributor.tileSize)
+            
+            // initalizing tile
+            let tile = Tile(originalTileLocation: shuffledPoint!, correctPosition: (x - 1), frame: tileFrame)
+            
+            // add to container to then later be checked for gameCompletion
+            distributor.tileContainer.append(tile)
+            
+            // not in correct space by defualt
+            tile.isInCorrectPosition = false
+            
+            // adding tile image
+            tile.image = image
+            
+            print("tile[\(x - 1)], x: \(shuffledPoint!.x), y: \(shuffledPoint!.y)")
+            
+              // add subview/gestures
+//            tile.isUserInteractionEnabled = true
+              self.view.addSubview(tile)
+              self.view.bringSubviewToFront(tile)
+//            addGestures(view: tile)
+
+        }
+    }
+    
+    
     
     // :: Gesture Recognizers ::
     func addTapGesture() {
@@ -117,6 +170,9 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         
         // adding tap gesture to hint button
         addTapGesture()
+        
+        distributor.getSubviewPositions(from: initalTileGrid)
+        addTilesToInitalView(from: slicedImages)
     }
     
     

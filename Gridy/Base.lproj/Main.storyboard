@@ -439,6 +439,23 @@
                     </view>
                     <connections>
                         <outlet property="hintButton" destination="naK-Qg-WI0" id="Vv4-2y-JZd"/>
+                        <outletCollection property="initalTileGrid" destination="eOQ-YH-F5y" collectionClass="NSMutableArray" id="U28-th-lq2"/>
+                        <outletCollection property="initalTileGrid" destination="6oI-N9-t5W" collectionClass="NSMutableArray" id="PwI-g8-Sag"/>
+                        <outletCollection property="initalTileGrid" destination="BuR-ci-1lV" collectionClass="NSMutableArray" id="YxR-3R-cVD"/>
+                        <outletCollection property="initalTileGrid" destination="KBx-35-Hpy" collectionClass="NSMutableArray" id="san-r5-KOB"/>
+                        <outletCollection property="initalTileGrid" destination="bUQ-CL-m2h" collectionClass="NSMutableArray" id="eOv-aE-VlX"/>
+                        <outletCollection property="initalTileGrid" destination="9ES-Li-Fzj" collectionClass="NSMutableArray" id="8jH-ry-AN0"/>
+                        <outletCollection property="initalTileGrid" destination="lsk-Ml-SqK" collectionClass="NSMutableArray" id="ukX-dM-oVh"/>
+                        <outletCollection property="initalTileGrid" destination="Wh1-QL-4la" collectionClass="NSMutableArray" id="26t-77-ejE"/>
+                        <outletCollection property="initalTileGrid" destination="OVC-oh-lAu" collectionClass="NSMutableArray" id="zuU-vo-I4K"/>
+                        <outletCollection property="initalTileGrid" destination="Uc5-va-Rsw" collectionClass="NSMutableArray" id="URi-vQ-lm4"/>
+                        <outletCollection property="initalTileGrid" destination="wy3-WG-2mh" collectionClass="NSMutableArray" id="rde-uX-JaT"/>
+                        <outletCollection property="initalTileGrid" destination="l4o-S0-AZU" collectionClass="NSMutableArray" id="8KW-RN-Ihj"/>
+                        <outletCollection property="initalTileGrid" destination="Qrm-Ni-ceG" collectionClass="NSMutableArray" id="Fm0-MK-J6J"/>
+                        <outletCollection property="initalTileGrid" destination="CiC-3g-2UG" collectionClass="NSMutableArray" id="ow3-1h-1Qg"/>
+                        <outletCollection property="initalTileGrid" destination="ahd-xH-is7" collectionClass="NSMutableArray" id="lLB-md-Itf"/>
+                        <outletCollection property="initalTileGrid" destination="kJq-XL-fMU" collectionClass="NSMutableArray" id="KKG-R9-O4Y"/>
+                        <outletCollection property="initalTileGrid" destination="i20-HK-C9g" collectionClass="NSMutableArray" id="WxV-Hx-MsP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wnj-gx-oIL" userLabel="First Responder" sceneMemberID="firstResponder"/>
