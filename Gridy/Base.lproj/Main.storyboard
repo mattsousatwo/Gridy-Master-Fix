@@ -438,6 +438,7 @@
                         <viewLayoutGuide key="safeArea" id="yDZ-aU-1JR"/>
                     </view>
                     <connections>
+                        <outlet property="gridView" destination="co0-9J-GUG" id="mdT-ed-xYL"/>
                         <outlet property="hintButton" destination="naK-Qg-WI0" id="Vv4-2y-JZd"/>
                         <outletCollection property="initalTileGrid" destination="eOQ-YH-F5y" collectionClass="NSMutableArray" id="U28-th-lq2"/>
                         <outletCollection property="initalTileGrid" destination="6oI-N9-t5W" collectionClass="NSMutableArray" id="PwI-g8-Sag"/>

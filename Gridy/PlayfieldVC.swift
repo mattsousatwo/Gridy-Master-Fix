@@ -28,14 +28,16 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     var tileContainer = [Tile]()
     // Container to store the positions of all tiles in use
     var tilePositions = [CGPoint]()
-    
+    // Container to store grid positions
+    var gridPositions = [CGPoint]()
     
     // :: Outlets ::
     // Eye Image to display Hint Image
     @IBOutlet weak var hintButton: UIImageView!
     // Outlet to contain subviews of the inital tile grid 
     @IBOutlet var initalTileGrid: [UIView]!
-    
+    // view tp act as grid 
+    @IBOutlet weak var gridView: UIView!
     
     
     
@@ -176,7 +178,8 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     @objc func moveTile(_ gesture: UIPanGestureRecognizer) {
         print("movingTile")
         
-        guard let tile = gesture.view else { return }
+        let tile = gesture.view as! Tile
+        
         // user tile movement as CGPoint
         let translation = gesture.translation(in: tile)
         // point used to get position of the tile
@@ -203,8 +206,11 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
                 // creating a boolean value to describe if user is over original grid, and a value to indicate which location that is to then animate the tile position to
                 let (nearOriginalGrid, snapToLocation) = grid.isNearTileBay(finalPosition: positionInSuperview!, positions: tilePositions)
                 
+                    // :: Check if near top grid ::
                     if nearOriginalGrid == true {
                         print("dropped in inital grid")
+                        
+                        tile.isInCorrectPosition = false
                         
                         UIView.animate(withDuration: 0.1, animations: {
                             // bringing tile to closest tile && scaling it to the size of the grid
@@ -213,8 +219,44 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
                         
                     }
                 
+                // :: Check for game grid ::
+                let (nearGameGrid, snapToGridLocation) = grid.isTileNear(grid: gridView, finalPosition: positionInSuperview!, positions: gridPositions)
                 
-            }
+                if nearGameGrid == true {
+                    
+                    print("nearTile - snapPosition[\(snapToGridLocation)]")
+                    // Bring tile to snap position - resize tile
+                    UIView.animate(withDuration: 0.1, animations: {
+                        // bringing tile to closest tile && scaling it to the size of the grid
+                        tile.frame = CGRect(origin: self.gridPositions[snapToGridLocation], size: CGSize(width: 87.5, height: 87.5))
+                    })
+                    
+                    print("snapped")
+                    print(":: original position = x: \(tile.originalTileLocation!.x), y: \(tile.originalTileLocation!.y)")
+                    
+                    // checking for game completion
+                    tile.isInCorrectPosition = false
+                    
+                    
+                    print("tile correct position : \(tile.correctPosition) \n dropped tile position \(snapToGridLocation)\n")
+                    
+                    // :::::: if tile is in drop location ::::::::
+                    // swap tiles
+                    
+                    if tile.correctPosition == snapToGridLocation {
+                        print("\n CORRECT POSITION \n")
+                        
+                        tile.isInCorrectPosition = true
+                        
+                        // ::::: remove drop ability :::::
+                        //gridLocations.remove(at: snapPosition)
+                        
+                        
+                    }
+                }
+                
+                
+        }
         
         
         
@@ -252,6 +294,8 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         handleTileCreation()
         
         tilePositions = grid.getInitalGridPositions(from: tileContainer)
+        
+        gridPositions = grid.createGridLocations(in: gridView)
         
     }
     
