@@ -42,21 +42,6 @@ struct TileDistribution {
 
     
     // :: Setting Tile Position ::
-    // Each tile is offset by a certain amount of points because it is a subview of another view
-    // ------ Can DELETE Possibly
-    // Methods to easily set position for UIView
-    func getXViewPosition(from view: UIView) -> CGFloat {
-        // x: 6
-        let xOffsetEquation = view.frame.origin.x + 6
-        return xOffsetEquation
-    }
-    
-    func getYViewPosition(from view: UIView) -> CGFloat {
-        // y: 68
-        let yOffsetEquation = view.frame.origin.y + 68
-        return yOffsetEquation
-    }
-    
     
     // func to get the location of each subview in the initalGridView and put location into a container to later be shuffled and assigned to another tile
     mutating func getSubviewPositions(from view: [UIView]) {

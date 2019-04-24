@@ -26,7 +26,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     // :: Outlets ::
     // Eye Image to display Hint Image
     @IBOutlet weak var hintButton: UIImageView!
-    
+    // Outlet to contain subviews of the inital tile grid 
     @IBOutlet var initalTileGrid: [UIView]!
     
     
@@ -48,7 +48,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     
     // Func to display hint image
     @objc func showHint(_ sender: UITapGestureRecognizer) {
-        print(" ^%^ Show Hint")
+        print("\n ^%^ Show Hint\n")
         
         // add onto number of times hint has been pressed
       //  gameStructure.hintCounter += 1
@@ -103,12 +103,11 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
             
         }, completion: { (success) in })
         
-        print("Show Hint")
-        
     }
     
     // Add Game Tiles using a range for each array of smaller images of the game image
      func addTilesToInitalView(from array: [UIImage]) {
+        print("\n  -#- Begin Adding Tiles -#-  ")
         
         let lowInt = 1
         let maxInt = 16
@@ -117,7 +116,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         let closedRange = lowInt...maxInt
         
         for x in closedRange {
-            print("adding tiles ")
+            
             
             // select image for tile
             let image = array[x - lowInt]
@@ -140,7 +139,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
             // adding tile image
             tile.image = image
             
-            print("tile[\(x - 1)], x: \(shuffledPoint!.x), y: \(shuffledPoint!.y)")
+            print("tile[\(x - 1)], origin = (x: \(shuffledPoint!.x), y: \(shuffledPoint!.y))\n")
             
               // add subview/gestures
 //            tile.isUserInteractionEnabled = true
@@ -149,6 +148,8 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
 //            addGestures(view: tile)
 
         }
+        
+        print("  -#- Finished Adding Tiles -#-  \n")
     }
     
     
@@ -165,33 +166,31 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     
     
     
+    
+    
+    
     // :: View Configuration ::
+    // func to control tile distribution
+    func handleTileCreation() {
+        // getting positions for tile distribution
+        distributor.getSubviewPositions(from: initalTileGrid)
+        // creating tiles & adding tiles to initalGrid
+        addTilesToInitalView(from: slicedImages)
+    }
+    
     func configurePlayfield() {
         
         // adding tap gesture to hint button
         addTapGesture()
-        
-        distributor.getSubviewPositions(from: initalTileGrid)
-        addTilesToInitalView(from: slicedImages)
+        // adding tiles to playfield 
+        handleTileCreation()
     }
     
     
-    
-    // ------ CAN DELETE ----
-    func checkSlices() {
-        // if tiles array != 0
-        guard slicedImages.count != 0 else {
-            print("\n ----- there are no tiles -> 0")
-            return
-        }
-            // print array amount
-            print("\n ----- tilesArray.count = \(slicedImages.count)")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        checkSlices()
         
         configurePlayfield()
         // Do any additional setup after loading the view.
