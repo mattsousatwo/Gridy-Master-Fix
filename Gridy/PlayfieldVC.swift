@@ -21,6 +21,8 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     var gameImage = UIImage()
     // Container of Sliced Images sent over from FramingVC
     var slicedImages = [UIImage]()
+    // Point used for comparision in moveTile to pan the image on screen
+    var tileStartingPoint = CGPoint()
     
     
     // :: Outlets ::
@@ -107,7 +109,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     
     // Add Game Tiles using a range for each array of smaller images of the game image
      func addTilesToInitalView(from array: [UIImage]) {
-        print("\n  -#- Begin Adding Tiles -#-  ")
+        print("\n  -#- Begin Adding Tiles -#-  \n")
         
         let lowInt = 1
         let maxInt = 16
@@ -142,10 +144,10 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
             print("tile[\(x - 1)], origin = (x: \(shuffledPoint!.x), y: \(shuffledPoint!.y))\n")
             
               // add subview/gestures
-//            tile.isUserInteractionEnabled = true
+              tile.isUserInteractionEnabled = true
               self.view.addSubview(tile)
               self.view.bringSubviewToFront(tile)
-//            addGestures(view: tile)
+              addPanGestureTo(view: tile)
 
         }
         
@@ -164,8 +166,34 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         tapGesture.delegate = self
     }
     
+    // function to handle moving tiles & dropping tiles onto each grid
+    @objc func moveTile(_ gesture: UIPanGestureRecognizer) {
+        print("movingTile")
+        
+        guard let tile = gesture.view else { return }
+        // user tile movement as CGPoint
+        let translation = gesture.translation(in: tile)
+        // point used to get position of the tile
+        let currentTilePosition = tile.frame.origin
+        
+        if gesture.state == .began {
+            
+            tileStartingPoint = currentTilePosition
+        }
+        // where the tile is currently
+        let userTargetMovementArea = CGPoint(x: (translation.x + (tileStartingPoint.x - currentTilePosition.x)), y: (translation.y + (tileStartingPoint.y - currentTilePosition.y)) )
+        // move tile to movement area
+        tile.transform = tile.transform.translatedBy(x: userTargetMovementArea.x, y: userTargetMovementArea.y)
+        
+    }
     
-    
+    // func to easily add gestures to each tile
+    func addPanGestureTo(view: UIImageView) {
+        let panGes = UIPanGestureRecognizer(target: self, action: #selector(moveTile(_:)))
+        view.addGestureRecognizer(panGes)
+        panGes.delegate = self
+        view.isUserInteractionEnabled = true
+    }
     
     
     
@@ -182,7 +210,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         
         // adding tap gesture to hint button
         addTapGesture()
-        // adding tiles to playfield 
+        // adding tiles to playfield
         handleTileCreation()
     }
     
