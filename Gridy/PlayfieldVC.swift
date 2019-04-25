@@ -208,7 +208,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
                 
                     // :: Check if near top grid ::
                     if nearOriginalGrid == true {
-                        print("dropped in inital grid")
+                        print("dropped in inital grid\n")
                         
                         tile.isInCorrectPosition = false
                         
@@ -224,38 +224,30 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
                 
                 if nearGameGrid == true {
                     
-                    print("nearTile - snapPosition[\(snapToGridLocation)]")
+                    print("\ndropped in snapPosition[\(snapToGridLocation)]\n")
                     // Bring tile to snap position - resize tile
                     UIView.animate(withDuration: 0.1, animations: {
                         // bringing tile to closest tile && scaling it to the size of the grid
                         tile.frame = CGRect(origin: self.gridPositions[snapToGridLocation], size: CGSize(width: 87.5, height: 87.5))
                     })
                     
-                    print("snapped")
-                    print(":: original position = x: \(tile.originalTileLocation!.x), y: \(tile.originalTileLocation!.y)")
-                    
                     // checking for game completion
                     tile.isInCorrectPosition = false
                     
-                    
                     print("tile correct position : \(tile.correctPosition) \n dropped tile position \(snapToGridLocation)\n")
                     
-                    // :::::: if tile is in drop location ::::::::
-                    // swap tiles
-                    
+                    // :: if tile is in correct location ::
                     if tile.correctPosition == snapToGridLocation {
                         print("\n CORRECT POSITION \n")
                         
                         tile.isInCorrectPosition = true
                         
-                        // ::::: remove drop ability :::::
-                        //gridLocations.remove(at: snapPosition)
-                        
-                        
                     }
                 }
                 
-                
+                // check if all tiles are in correct positions
+                // if in correct positions, go to GameOver View 
+                manager.checkForCompletion(tileContainer)
         }
         
         
