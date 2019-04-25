@@ -126,7 +126,6 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         
         for x in closedRange {
             
-            
             // select image for tile
             let image = array[x - lowInt]
             
@@ -159,10 +158,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         }
         
         print("  -#- Finished Adding Tiles -#-  \n")
-       
     }
-    
-    
     
     // :: Gesture Recognizers ::
     func addTapGesture() {
@@ -189,12 +185,10 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
             
             tileStartingPoint = currentTilePosition
         }
-        // where the tile is currently
+        // where the user is dragging the tile to currently
         let userTargetMovementArea = CGPoint(x: (translation.x + (tileStartingPoint.x - currentTilePosition.x)), y: (translation.y + (tileStartingPoint.y - currentTilePosition.y)) )
         // move tile to movement area
         tile.transform = tile.transform.translatedBy(x: userTargetMovementArea.x, y: userTargetMovementArea.y)
-        
-        
         
             // If user stops moving tile
             if gesture.state == .ended {
@@ -246,8 +240,20 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
                 }
                 
                 // check if all tiles are in correct positions
-                // if in correct positions, go to GameOver View 
+                // if in correct positions, go to GameOver View
                 manager.checkForCompletion(tileContainer)
+                
+                
+                if nearGameGrid == false {
+                    
+                    print("\nDropped Out of Bounds - back to original pos\noriginalPos = (x: \(tile.originalTileLocation!.x), y: \(tile.originalTileLocation!.y)) \n")
+                    UIView.animate(withDuration: 0.1 , animations: {
+                        // changes view position and size - does not place tile in original location without second tile position declaration
+                        tile.frame = CGRect(origin: tile.originalTileLocation!, size: CGSize(width: 54, height: 54))
+                        tile.frame.origin = tile.originalTileLocation!
+                    })
+                }
+
         }
         
         
