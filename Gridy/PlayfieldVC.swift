@@ -18,6 +18,8 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     let grid = GridPlacement()
     
     // :: Variables ::
+    // Game Mode
+    var mode: GameManager.GameMode = .moves
     // GameImage To be used for hint display
     var gameImage = UIImage()
     // Container of Sliced Images sent over from FramingVC
@@ -30,6 +32,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     var tilePositions = [CGPoint]()
     // Container to store grid positions
     var gridPositions = [CGPoint]()
+    
     
     // :: Outlets ::
     // Eye Image to display Hint Image
@@ -197,22 +200,6 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
                 // recognize position in superview
                 let positionInSuperview = gesture.view?.convert(userTargetMovementArea, to: gesture.view?.superview)
                 
-                // creating a boolean value to describe if user is over original grid, and a value to indicate which location that is to then animate the tile position to
-                let (nearOriginalGrid, snapToLocation) = grid.isNearTileBay(finalPosition: positionInSuperview!, positions: tilePositions)
-                
-                    // :: Check if near top grid ::
-                    if nearOriginalGrid == true {
-                        print("dropped in inital grid\n")
-                        
-                        tile.isInCorrectPosition = false
-                        
-                        UIView.animate(withDuration: 0.1, animations: {
-                            // bringing tile to closest tile && scaling it to the size of the grid
-                            tile.frame = CGRect(origin: self.tilePositions[snapToLocation], size: CGSize(width: 54, height: 54))
-                        })
-                        
-                    }
-                
                 // :: Check for game grid ::
                 let (nearGameGrid, snapToGridLocation) = grid.isTileNear(grid: gridView, finalPosition: positionInSuperview!, positions: gridPositions)
                 
@@ -253,6 +240,27 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
                         tile.frame.origin = tile.originalTileLocation!
                     })
                 }
+                
+                 // :: Check if near top grid ::
+                
+                // creating a boolean value to describe if user is over original grid, and a value to indicate which location that is to then animate the tile position to
+                let (nearOriginalGrid, snapToLocation) = grid.isNearTileBay(finalPosition: positionInSuperview!, positions: tilePositions)
+                
+                if nearOriginalGrid == true {
+                    print("dropped in inital grid\n")
+                    
+                    tile.isInCorrectPosition = false
+                    
+                    UIView.animate(withDuration: 0.1, animations: {
+                        // bringing tile to closest tile && scaling it to the size of the grid
+                        tile.frame = CGRect(origin: self.tilePositions[snapToLocation], size: CGSize(width: 54, height: 54))
+                    })
+                    
+                }
+                
+                
+                
+                
 
         }
         
@@ -284,29 +292,27 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         // creating tiles & adding tiles to initalGrid
         createTiles(from: slicedImages)
     }
-    
     func configurePlayfield() {
         // adding tap gesture to hint button
         addTapGesture()
         // adding tiles to playfield
         handleTileCreation()
         
+        // Getting inital grid tile cordinates to allow tile placement
         tilePositions = grid.getInitalGridPositions(from: tileContainer)
-        
+        // creating grid locations to allow tile placement
         gridPositions = grid.createGridLocations(in: gridView)
-        
     }
-    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       configurePlayfield()
         
-        configurePlayfield()
         // Do any additional setup after loading the view.
         
-        
+
     }
     
 

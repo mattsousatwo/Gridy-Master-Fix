@@ -11,6 +11,16 @@ import UIKit
 
 class GameManager {
     
+    // :: Handling Game Mode ::
+    // Enumeration to handle the game mode
+    enum GameMode {
+        case timed
+        case moves
+    }
+    
+    
+    
+    // :: Check for Completion
     // Check if all tiles are in correct positions
     func checkForCompletion(_ array: [Tile]) {
         

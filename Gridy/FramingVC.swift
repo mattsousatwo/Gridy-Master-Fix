@@ -14,7 +14,9 @@ class FramingVC: UIViewController, UIGestureRecognizerDelegate {
     // To cut up the game image into smaller slices
     var slicing = Slicing()
     // Screenshot capabilities
-    var capture = ImageCapture() 
+    var capture = ImageCapture()
+    // setting game mode
+    var manager = GameManager()
     
     // :: Variables ::
     // image variable to store a picked image from the previous view
@@ -23,6 +25,8 @@ class FramingVC: UIViewController, UIGestureRecognizerDelegate {
     var imageArray = [UIImage]()
     // The image taken from the captureArea
     var image = UIImage()
+    // game mode
+    var mode: GameManager.GameMode = .moves
     
     // :: Outlets ::
     // UIImageView inside captureArea to display chosen game image
@@ -58,8 +62,7 @@ class FramingVC: UIViewController, UIGestureRecognizerDelegate {
         print("\n$ image array count\(imageArray.count)\n")
         
         // Go to PlayfieldVC
-        print("-> GoToPlayfieldVC")
-        performSegue(withIdentifier: "FramingToPlayfield", sender: self)
+        chooseGameMode()
     } 
     
     
@@ -187,10 +190,55 @@ class FramingVC: UIViewController, UIGestureRecognizerDelegate {
 
         let nextVC = segue.destination as! PlayfieldVC
 
-        // Send GameImage over to PlayfieldVC
+        // Send data over to next view controller
         nextVC.gameImage = image
         nextVC.slicedImages = imageArray
+        nextVC.mode = mode 
     }
 
-}   
-
+    // :: Set Game Mode ::
+    // func to set time mode to game
+    func setTimedMode() {
+        mode = .timed
+        print("\n -- mode set to Timed Mode -- ")
+        // Go to PlayfieldVC
+        print("-> GoToPlayfieldVC\n")
+        performSegue(withIdentifier: "FramingToPlayfield", sender: self)
+    }
+    
+    // func to set moves mode to game
+    func setMovesMode() {
+        mode = .moves
+        print("\n -- mode set to Moves Mode -- ")
+        // Go to PlayfieldVC
+        print("-> GoToPlayfieldVC\n")
+        performSegue(withIdentifier: "FramingToPlayfield", sender: self)
+    }
+    
+    // add this func to alert controller displayable conditions     (button)
+    func chooseGameMode() {
+        let alertController = UIAlertController(title: "Choose Game Mode", message: nil, preferredStyle: .actionSheet)
+        
+        // Create UIAlertAction to add to Controller
+        // for each UIAlertAction we need a title, style, and a handler, which we can use as a closure after the fisrt two parameters that will be executed after the action is called
+        let customAction = UIAlertAction(title: "Moves", style: .default) { (action) in self.setMovesMode() }
+        
+        let timerAction = UIAlertAction(title: "Timer", style: .default) { (action) in self.setTimedMode() }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in print("Cancel Action") }
+        
+        // Add Action to Controller
+        alertController.addAction(customAction)
+        
+        alertController.addAction(timerAction)
+        
+        alertController.addAction(cancelAction)
+        
+        // Present View Controller
+        present(alertController, animated: true) {
+            // Code to be run after view is displayed
+        }
+    }
+    
+   
+}
