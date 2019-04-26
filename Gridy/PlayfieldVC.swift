@@ -179,6 +179,9 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         
         let tile = gesture.view as! Tile
         
+        // bring seleted tile to top layer 
+        self.view.bringSubviewToFront(tile)
+        
         // user tile movement as CGPoint
         let translation = gesture.translation(in: tile)
         // point used to get position of the tile
