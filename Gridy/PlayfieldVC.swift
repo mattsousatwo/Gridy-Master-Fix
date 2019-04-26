@@ -181,8 +181,13 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         
         let tile = gesture.view as! Tile
         
-        // bring seleted tile to top layer
+        // bring selected tile to top layer
         self.view.bringSubviewToFront(tile)
+        
+        // add shadow to selected tile
+        tile.layer.shadowOffset = CGSize(width: 0, height: 8)
+        tile.layer.shadowOpacity = 0.25
+        tile.layer.shadowRadius = 8
         
         // user tile movement as CGPoint
         let translation = gesture.translation(in: tile)
@@ -215,6 +220,8 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
                     UIView.animate(withDuration: 0.1, animations: {
                         // bringing tile to closest tile && scaling it to the size of the grid
                         tile.frame = CGRect(origin: self.gridPositions[snapToGridLocation], size: CGSize(width: 87.5, height: 87.5))
+                        // Remove shadow
+                        tile.layer.shadowOpacity = 0
                     })
                     
                     // checking for game completion
@@ -243,6 +250,8 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
                         // changes view position and size - does not place tile in original location without second tile position declaration
                         tile.frame = CGRect(origin: tile.originalTileLocation!, size: CGSize(width: 54, height: 54))
                         tile.frame.origin = tile.originalTileLocation!
+                        // Remove shadow
+                        tile.layer.shadowOpacity = 0
                     })
                 }
                 
@@ -259,6 +268,8 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
                     UIView.animate(withDuration: 0.1, animations: {
                         // bringing tile to closest tile && scaling it to the size of the grid
                         tile.frame = CGRect(origin: self.tilePositions[snapToLocation], size: CGSize(width: 54, height: 54))
+                        // Remove shadow
+                        tile.layer.shadowOpacity = 0
                     })
                     
                 }
