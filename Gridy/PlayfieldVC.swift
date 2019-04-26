@@ -41,8 +41,10 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet var initalTileGrid: [UIView]!
     // view tp act as grid 
     @IBOutlet weak var gridView: UIView!
-    
-    
+    // Label to display game mode
+    @IBOutlet weak var modeLabel: UILabel!
+    // label to display game mode value - time left / moves made 
+    @IBOutlet weak var modeLabelValue: UILabel!
     
     
     
@@ -308,6 +310,29 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     
+    func updateMode() {
+        switch mode {
+        case .moves:
+            print("moves mode")
+            // display labels
+            modeLabel.text = "moves:"
+            modeLabelValue.text = "00"
+           
+            
+            // add timer to count time elapsed
+            
+        case .timed:
+            print("timed mode")
+            // display labels
+            modeLabel.text = "time:"
+            modeLabelValue.text = "5:00"
+            
+            
+            // add timer to count down from timeValue
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -315,7 +340,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         
         // Do any additional setup after loading the view.
         
-
+        updateMode()
     }
     
 

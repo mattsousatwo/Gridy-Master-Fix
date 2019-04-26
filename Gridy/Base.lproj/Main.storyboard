@@ -440,6 +440,8 @@
                     <connections>
                         <outlet property="gridView" destination="co0-9J-GUG" id="mdT-ed-xYL"/>
                         <outlet property="hintButton" destination="naK-Qg-WI0" id="Vv4-2y-JZd"/>
+                        <outlet property="modeLabel" destination="oZt-mB-Th5" id="NLp-3M-m9Z"/>
+                        <outlet property="modeLabelValue" destination="QjV-FV-IhN" id="FGD-Lh-f2D"/>
                         <outletCollection property="initalTileGrid" destination="eOQ-YH-F5y" collectionClass="NSMutableArray" id="U28-th-lq2"/>
                         <outletCollection property="initalTileGrid" destination="6oI-N9-t5W" collectionClass="NSMutableArray" id="PwI-g8-Sag"/>
                         <outletCollection property="initalTileGrid" destination="BuR-ci-1lV" collectionClass="NSMutableArray" id="YxR-3R-cVD"/>

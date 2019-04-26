@@ -81,6 +81,8 @@ class Scoring {
                 // set to 3 mins in seconds
             timeValue = 180
             
+            // add timer to count down from timeValue
+            
         }
         
         
