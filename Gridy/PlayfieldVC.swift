@@ -179,7 +179,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         
         let tile = gesture.view as! Tile
         
-        // bring seleted tile to top layer 
+        // bring seleted tile to top layer
         self.view.bringSubviewToFront(tile)
         
         // user tile movement as CGPoint
