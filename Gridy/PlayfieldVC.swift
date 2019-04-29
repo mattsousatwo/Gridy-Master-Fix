@@ -175,9 +175,9 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         tapGesture.delegate = self
     }
     
+    // Can Update this to use switch statment instead
     // function to handle moving tiles & dropping tiles onto each grid
     @objc func moveTile(_ gesture: UIPanGestureRecognizer) {
-        print("movingTile")
         
         let tile = gesture.view as! Tile
         
@@ -189,102 +189,111 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         tile.layer.shadowOpacity = 0.25
         tile.layer.shadowRadius = 8
         
+        // :: Movement Position ::
         // user tile movement as CGPoint
         let translation = gesture.translation(in: tile)
         // point used to get position of the tile
         let currentTilePosition = tile.frame.origin
         
-        if gesture.state == .began {
-            
-            tileStartingPoint = currentTilePosition
-        }
         // where the user is dragging the tile to currently
         let userTargetMovementArea = CGPoint(x: (translation.x + (tileStartingPoint.x - currentTilePosition.x)), y: (translation.y + (tileStartingPoint.y - currentTilePosition.y)) )
         // move tile to movement area
         tile.transform = tile.transform.translatedBy(x: userTargetMovementArea.x, y: userTargetMovementArea.y)
         
-            // If user stops moving tile
-            if gesture.state == .ended {
-               print("\n o stoppedMoving\n")
+        // :: Handle Dropped Position ::
+        // recognize position in superview
+        let positionInSuperview = gesture.view?.convert(userTargetMovementArea, to: gesture.view?.superview)
+        
+        // Check if tile is over game grid
+        let (nearGameGrid, snapToGridLocation) = grid.isTileNear(grid: gridView, finalPosition: positionInSuperview!, positions: gridPositions)
+        
+        // Check if tile is over inital tile grid
+        let (nearOriginalGrid, snapToLocation) = grid.isNearTileBay(finalPosition: positionInSuperview!, positions: tilePositions)
+        
+        
+        switch gesture.state {
+            
+        case .began :
+            
+            // Setting tiles position to currentTilePosition
+            tileStartingPoint = currentTilePosition
+            print("movingTile")
+            
+        case .ended :
+            print("\n o stoppedMoving\n")
+            
+            // Set tile position to incorrect by default
+            tile.isInCorrectPosition = false
+            
+            // check if near game grid
+            if nearGameGrid == true {
                 
-                // recognize position in superview
-                let positionInSuperview = gesture.view?.convert(userTargetMovementArea, to: gesture.view?.superview)
+                // Drop into grid position
+                print("\ndropped in snapPosition[\(snapToGridLocation)]\n")
+                // Bring tile to snap position - resize tile
+                UIView.animate(withDuration: 0.1, animations: {
+                    // bringing tile to closest tile && scaling it to the size of the grid
+                    tile.frame = CGRect(origin: self.gridPositions[snapToGridLocation], size: CGSize(width: 87.5, height: 87.5))
+                    // Remove shadow
+                    tile.layer.shadowOpacity = 0
+                })
+            }
+            
+            // check if near tile bay - inital tile grid
+            if nearOriginalGrid == true {
+                print("\n - near original grid")
                 
-                // :: Check for game grid ::
-                let (nearGameGrid, snapToGridLocation) = grid.isTileNear(grid: gridView, finalPosition: positionInSuperview!, positions: gridPositions)
+                tile.isInCorrectPosition = false
                 
-                if nearGameGrid == true {
-                    
-                    print("\ndropped in snapPosition[\(snapToGridLocation)]\n")
-                    // Bring tile to snap position - resize tile
-                    UIView.animate(withDuration: 0.1, animations: {
-                        // bringing tile to closest tile && scaling it to the size of the grid
-                        tile.frame = CGRect(origin: self.gridPositions[snapToGridLocation], size: CGSize(width: 87.5, height: 87.5))
-                        // Remove shadow
-                        tile.layer.shadowOpacity = 0
-                    })
-                    
-                    // checking for game completion
-                    tile.isInCorrectPosition = false
-                    
-                    print("tile correct position : \(tile.correctPosition) \n dropped tile position \(snapToGridLocation)\n")
-                    
-                    // :: if tile is in correct location ::
-                    if tile.correctPosition == snapToGridLocation {
-                        print("\n CORRECT POSITION \n")
-                        
-                        tile.isInCorrectPosition = true
-                        
-                    }
-                }
+                // Drop into position
                 
-                // check if all tiles are in correct positions
-                // if in correct positions, go to GameOver View
-                manager.checkForCompletion(tileContainer)
+                print("dropped in inital grid\n")
                 
+                tile.isInCorrectPosition = false
                 
-                if nearGameGrid == false {
-                    
-                    print("\nDropped Out of Bounds - back to original pos\noriginalPos = (x: \(tile.originalTileLocation!.x), y: \(tile.originalTileLocation!.y)) \n")
-                    UIView.animate(withDuration: 0.1 , animations: {
-                        // changes view position and size - does not place tile in original location without second tile position declaration
-                        tile.frame = CGRect(origin: tile.originalTileLocation!, size: CGSize(width: 54, height: 54))
-                        tile.frame.origin = tile.originalTileLocation!
-                        // Remove shadow
-                        tile.layer.shadowOpacity = 0
-                    })
-                }
-                
-                 // :: Check if near top grid ::
-                
-                // creating a boolean value to describe if user is over original grid, and a value to indicate which location that is to then animate the tile position to
-                let (nearOriginalGrid, snapToLocation) = grid.isNearTileBay(finalPosition: positionInSuperview!, positions: tilePositions)
-                
-                if nearOriginalGrid == true {
-                    print("dropped in inital grid\n")
-                    
-                    tile.isInCorrectPosition = false
-                    
-                    UIView.animate(withDuration: 0.1, animations: {
-                        // bringing tile to closest tile && scaling it to the size of the grid
-                        tile.frame = CGRect(origin: self.tilePositions[snapToLocation], size: CGSize(width: 54, height: 54))
-                        // Remove shadow
-                        tile.layer.shadowOpacity = 0
-                    })
-                    
-                }
+                UIView.animate(withDuration: 0.1, animations: {
+                    // bringing tile to closest tile && scaling it to the size of the grid
+                    tile.frame = CGRect(origin: self.tilePositions[snapToLocation], size: CGSize(width: 54, height: 54))
+                    // Remove shadow
+                    tile.layer.shadowOpacity = 0
+                })
                 
                 
+            }
+            
+            if nearGameGrid == false  {
+                
+                // Drop into originalTileLocation
+                
+                print("\nDropped Out of Bounds - back to original pos\noriginalPos = (x: \(tile.originalTileLocation!.x), y: \(tile.originalTileLocation!.y)) \n")
+                UIView.animate(withDuration: 0.1 , animations: {
+                    // changes view position and size - does not place tile in original location without second tile position declaration
+                    tile.frame = CGRect(origin: tile.originalTileLocation!, size: CGSize(width: 54, height: 54))
+                    tile.frame.origin = tile.originalTileLocation!
+                    // Remove shadow
+                    tile.layer.shadowOpacity = 0
+                })
                 
                 
-
+            }
+            
+            // :: if tile is in correct location ::
+            if tile.correctPosition == snapToGridLocation {
+                print("\n -- CORRECT POSITION -- n")
+                
+                tile.isInCorrectPosition = true
+                
+            }
+            
+            
+            // Check if all tiles are in correct position
+            manager.checkForCompletion(tileContainer)
+            
+            default:
+            print("Gesture Recognized")
+            
+            
         }
-        
-        
-        
-        
-        
-        
         
         
         
