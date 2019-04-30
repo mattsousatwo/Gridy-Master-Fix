@@ -33,7 +33,6 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     var tilePositions = [CGPoint]()
     // Container to store grid positions
     var gridPositions = [CGPoint]()
-    
 
     // :: Outlets ::
     // Eye Image to display Hint Image
@@ -47,20 +46,12 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     // label to display game mode value - time left / moves made 
     @IBOutlet weak var modeLabelValue: UILabel!
     
-    
-    
-    
-    
-    
     // :: Buttons ::
     // New Game button - Cancel, go back to HomeVC
     @IBAction func newGamePressed(_ sender: Any) {
         print("\no<-X newGamePressed()")
-        
         // end timer
         time.stopTimer()
-        // remove current game image
-        
     }
     
     // Func to display hint image
@@ -128,7 +119,6 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         tapGesture.delegate = self
     }
     
-    // Can Update this to use switch statment instead
     // function to handle moving tiles & dropping tiles onto each grid
     @objc func moveTile(_ gesture: UIPanGestureRecognizer) {
         
@@ -176,9 +166,8 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         case .ended :
             print("\n o stoppedMoving\n")
             
+            // update moves counter - add onto moves made
             moves.addOntoMoves(counter: modeLabelValue, mode: mode)
-            
-            
             
             // Set tile position to incorrect by default
             tile.isInCorrectPosition = false
@@ -187,7 +176,8 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
             if nearGameGrid == true {
                 
                 // Drop into grid position
-                print("\ndropped in snapPosition[\(snapToGameGridLocation)]\n")
+                print("\ndropped in snapPosition[\(snapToGameGridLocation)]")
+                print("correct position = [\(tile.correctPosition)] \n")
                 // Bring tile to snap position - resize tile
                 UIView.animate(withDuration: 0.1, animations: {
                     // bringing tile to closest tile && scaling it to the size of the grid
@@ -212,8 +202,6 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
                     // Remove shadow
                     tile.layer.shadowOpacity = 0
                 })
-                
-                
             }
             
             // if out of grid bounds - drop in original location
@@ -237,15 +225,17 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
             }
             
             // Check if all tiles are in correct position
-            manager.checkForCompletion(tileContainer)
+            let completion = manager.checkForCompletion(tileContainer)
+            // if all tiles are in correct position stop timer
+            if completion == true {
+                print("completion == true - stopTimer()")
+                time.stopTimer()
+            }
             
             default:
                 print("default: Pan Gesture Recognized")
         }
     }
-    
-    
-    
     
     // func to easily add gestures to each tile
     func addPanGestureTo(view: UIImageView) {
@@ -254,7 +244,6 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         panGes.delegate = self
         view.isUserInteractionEnabled = true
     }
-    
     
     // :: View Configuration ::
     // func to control tile distribution

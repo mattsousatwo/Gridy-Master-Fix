@@ -237,16 +237,21 @@
                                 <state key="normal" title="New Game">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="newGamePressed:" destination="kkl-ya-7bW" eventType="touchUpInside" id="ZHY-Rs-fwF"/>
                                     <segue destination="9Kn-Sa-zzk" kind="unwind" unwindAction="unwindToHomeWithUnwindSegue:" id="jM8-fw-yOc"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Gridy-name-small-green" translatesAutoresizingMaskIntoConstraints="NO" id="pfd-oe-MV7">
-                                <rect key="frame" x="145" y="26" width="75" height="34"/>
+                                <rect key="frame" x="145" y="26" width="70" height="34"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moves" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZt-mB-Th5">
-                                <rect key="frame" x="235" y="30" width="60" height="24"/>
+                                <rect key="frame" x="230" y="30" width="60" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -417,10 +422,10 @@
                             <constraint firstItem="eOQ-YH-F5y" firstAttribute="leading" secondItem="yDZ-aU-1JR" secondAttribute="leading" constant="6" id="Ixy-uR-q4K"/>
                             <constraint firstAttribute="trailing" secondItem="qmK-ya-OVP" secondAttribute="trailing" id="JRp-QR-CKC"/>
                             <constraint firstItem="yDZ-aU-1JR" firstAttribute="trailing" secondItem="2GN-ck-iC5" secondAttribute="trailing" constant="77" id="ORK-7D-GTo"/>
+                            <constraint firstItem="QjV-FV-IhN" firstAttribute="leading" relation="lessThanOrEqual" secondItem="oZt-mB-Th5" secondAttribute="trailing" constant="30" id="Qw5-bW-VQc"/>
                             <constraint firstItem="2GN-ck-iC5" firstAttribute="leading" secondItem="yDZ-aU-1JR" secondAttribute="leading" constant="77" id="Wex-r8-ug7"/>
                             <constraint firstItem="yDZ-aU-1JR" firstAttribute="bottom" secondItem="qmK-ya-OVP" secondAttribute="bottom" id="ZJr-Bw-8Z0"/>
                             <constraint firstItem="yDZ-aU-1JR" firstAttribute="trailing" secondItem="eOQ-YH-F5y" secondAttribute="trailing" constant="7" id="ZTI-H1-vW1"/>
-                            <constraint firstItem="QjV-FV-IhN" firstAttribute="leading" relation="lessThanOrEqual" secondItem="oZt-mB-Th5" secondAttribute="trailing" constant="25" id="b2o-V0-qZE"/>
                             <constraint firstItem="pfd-oe-MV7" firstAttribute="top" secondItem="yDZ-aU-1JR" secondAttribute="top" constant="6" id="bpu-8g-dJh"/>
                             <constraint firstItem="co0-9J-GUG" firstAttribute="top" secondItem="eOQ-YH-F5y" secondAttribute="bottom" constant="47" id="cB0-Nv-a2H"/>
                             <constraint firstItem="QjV-FV-IhN" firstAttribute="top" secondItem="yDZ-aU-1JR" secondAttribute="top" constant="10" id="cqL-Ud-9aH"/>
@@ -432,7 +437,7 @@
                             <constraint firstItem="yDZ-aU-1JR" firstAttribute="bottom" secondItem="eOQ-YH-F5y" secondAttribute="bottom" constant="404" id="vl0-yP-2iu"/>
                             <constraint firstItem="co0-9J-GUG" firstAttribute="leading" secondItem="yDZ-aU-1JR" secondAttribute="leading" constant="14" id="w6o-MX-cQI"/>
                             <constraint firstItem="yDZ-aU-1JR" firstAttribute="trailing" secondItem="QjV-FV-IhN" secondAttribute="trailing" constant="16" id="wi8-r2-hQn"/>
-                            <constraint firstItem="QjV-FV-IhN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oZt-mB-Th5" secondAttribute="trailing" constant="20" id="xdU-Ct-HdG"/>
+                            <constraint firstItem="QjV-FV-IhN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oZt-mB-Th5" secondAttribute="trailing" constant="25" id="xdU-Ct-HdG"/>
                             <constraint firstItem="2GN-ck-iC5" firstAttribute="top" secondItem="eOQ-YH-F5y" secondAttribute="bottom" constant="3" id="yR1-gH-T8s"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yDZ-aU-1JR"/>

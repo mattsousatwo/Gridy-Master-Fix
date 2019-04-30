@@ -148,7 +148,7 @@ class FramingVC: UIViewController, UIGestureRecognizerDelegate {
         selectedImageView.isUserInteractionEnabled = true
     
         // rounding edges to start button 
-        startButton.layer.cornerRadius = 12
+        startButton.layer.cornerRadius = 10
         
         // pan gesture recognizer
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(moveImageView(_:)))

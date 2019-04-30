@@ -16,7 +16,6 @@
 		619ECA79226FAF7E00204B09 /* TileDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619ECA78226FAF7E00204B09 /* TileDistribution.swift */; };
 		619ECA7B226FB1E300204B09 /* ImageCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619ECA7A226FB1E300204B09 /* ImageCapture.swift */; };
 		619ECA7D226FD33200204B09 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619ECA7C226FD33200204B09 /* GameManager.swift */; };
-		61A96A8E2272B73E00B4B170 /* Scoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A96A8D2272B73E00B4B170 /* Scoring.swift */; };
 		61B74C3622780F40008BC3B2 /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B74C3522780F40008BC3B2 /* TimeManager.swift */; };
 		61B74C3822781E8A008BC3B2 /* MovesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B74C3722781E8A008BC3B2 /* MovesManager.swift */; };
 		61DBA69B219C976E00384503 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DBA69A219C976E00384503 /* AppDelegate.swift */; };
@@ -35,7 +34,6 @@
 		619ECA78226FAF7E00204B09 /* TileDistribution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TileDistribution.swift; path = Gridy/TileDistribution.swift; sourceTree = SOURCE_ROOT; };
 		619ECA7A226FB1E300204B09 /* ImageCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageCapture.swift; path = Gridy/ImageCapture.swift; sourceTree = SOURCE_ROOT; };
 		619ECA7C226FD33200204B09 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameManager.swift; path = Gridy/GameManager.swift; sourceTree = SOURCE_ROOT; };
-		61A96A8D2272B73E00B4B170 /* Scoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Scoring.swift; path = Gridy/Scoring.swift; sourceTree = SOURCE_ROOT; };
 		61B74C3522780F40008BC3B2 /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimeManager.swift; path = Gridy/TimeManager.swift; sourceTree = SOURCE_ROOT; };
 		61B74C3722781E8A008BC3B2 /* MovesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MovesManager.swift; path = Gridy/MovesManager.swift; sourceTree = SOURCE_ROOT; };
 		61DBA697219C976E00384503 /* Gridy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gridy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,7 +93,6 @@
 				619ECA7A226FB1E300204B09 /* ImageCapture.swift */,
 				619ECA7C226FD33200204B09 /* GameManager.swift */,
 				61147DAD2270EEFD00FAAA82 /* GridPlacement.swift */,
-				61A96A8D2272B73E00B4B170 /* Scoring.swift */,
 				61B74C3522780F40008BC3B2 /* TimeManager.swift */,
 				61B74C3722781E8A008BC3B2 /* MovesManager.swift */,
 			);
@@ -211,7 +208,6 @@
 				61147DAE2270EEFD00FAAA82 /* GridPlacement.swift in Sources */,
 				619ECA7B226FB1E300204B09 /* ImageCapture.swift in Sources */,
 				6196C37D226DB0D50018BCC2 /* PlayfieldVC.swift in Sources */,
-				61A96A8E2272B73E00B4B170 /* Scoring.swift in Sources */,
 				619ECA75226FAC8200204B09 /* Slicing.swift in Sources */,
 				619ECA79226FAF7E00204B09 /* TileDistribution.swift in Sources */,
 			);

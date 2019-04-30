@@ -10,7 +10,7 @@ import UIKit
 
 class TimeManager {
 
-    
+    let mm = MovesManager()
     var timer: Timer?
     
     var score = 1000
@@ -42,7 +42,7 @@ class TimeManager {
             print("moves mode")
             // display labels
             label.text = "moves:"
-            value.text = "00"
+            value.text = "\(mm.movesMade)"
             
             
             // add timer to count time elapsed
@@ -94,6 +94,10 @@ class TimeManager {
         print("-- Time Elapsed = \(timeValue) seconds")
     }
     
-    
+    // return final score
+    func getScore() -> Int {
+        let finalScore = (score - (mm.hintCounter * 2))
+        return finalScore
+    }
     
 }

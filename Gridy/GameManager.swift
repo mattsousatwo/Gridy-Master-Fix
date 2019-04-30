@@ -11,6 +11,7 @@ import UIKit
 
 class GameManager {
     
+    let tm = TimeManager()
     // :: Handling Game Mode ::
     // Enumeration to handle the game mode
     enum GameMode {
@@ -22,7 +23,7 @@ class GameManager {
     
     // :: Check for Completion
     // Check if all tiles are in correct positions
-    func checkForCompletion(_ array: [Tile]) {
+    func checkForCompletion(_ array: [Tile]) -> Bool {
         
         // If all tiles in tile container are in correct tile position return true
         let allTilesCorrect = array.allSatisfy { $0.isInCorrectPosition == true }
@@ -31,30 +32,32 @@ class GameManager {
         if allTilesCorrect == true {
             print("\n*** All in Correct Positions! ***\n")
             
-            // if game in timed mode
-//            if timeMode == true {
-//                // turn timer off
-//                gameStructure.timer?.invalidate()
-//                gameStructure.timer = nil
-//            }
-//
+            
+            // stop timer
+            
+            
             // go to game over screen - with delay
 //            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
 //                self.performSegue(withIdentifier: "goToGameOverVC", sender: self)
 //            })
             
              // remove ability to move tiles
-//            for tile in array {
-//                tile.isUserInteractionEnabled = false
-//            }
+            for tile in array {
+                tile.isUserInteractionEnabled = false
+            }
+            
+            return true
+            
         }
         else {
             // else continue game
             print("\n---- Not all tiles are in correct positions\n")
+        return false
         }
         
     }
     
+    // display game image for a short time with a blur view bg  
     func displayHint(image: UIImage, in view: UIView) {
         print("\n ^%^ Show Hint\n")
         
