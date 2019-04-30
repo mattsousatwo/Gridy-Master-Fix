@@ -16,6 +16,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     var distributor = TileDistribution()
     let grid = GridPlacement()
     var time = TimeManager()
+    var moves = MovesManager() 
     
     // :: Variables ::
     // Game Mode
@@ -33,19 +34,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     // Container to store grid positions
     var gridPositions = [CGPoint]()
     
-    
-    // :: Timer && Moves ::
-    // variable for moves made
-    var movesMade: Int = 0
-    // score
-    var score = 1000
-    // hint counter
-    var hintCounter: Int = 0
-    
-    
-    
-    
-    
+
     // :: Outlets ::
     // Eye Image to display Hint Image
     @IBOutlet weak var hintButton: UIImageView!
@@ -69,7 +58,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         print("\no<-X newGamePressed()")
         
         // end timer
-        stopTimer()
+        time.stopTimer()
         // remove current game image
         
     }
@@ -79,8 +68,8 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     // display Hint
     manager.displayHint(image: gameImage, in: self.view)
     // update hint counter
-    hintCounter += 1
-        print("- Hint Counter: \(hintCounter)\n")
+    moves.hintCounter += 1
+        print("- Hint Counter: \(moves.hintCounter)\n")
     }
     
     // Create Tiles and add tiles to inital Grid
@@ -182,10 +171,14 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
             
             // Setting tiles position to currentTilePosition - (position user is dragging to currently)
             tileStartingPoint = currentTilePosition
-            print("movingTile")
+            print("\n - :Picked Up Tile: - \n")
             
         case .ended :
             print("\n o stoppedMoving\n")
+            
+            moves.addOntoMoves(counter: modeLabelValue, mode: mode)
+            
+            
             
             // Set tile position to incorrect by default
             tile.isInCorrectPosition = false
@@ -247,7 +240,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
             manager.checkForCompletion(tileContainer)
             
             default:
-                print("default: Gesture Recognized")
+                print("default: Pan Gesture Recognized")
         }
     }
     
@@ -284,69 +277,6 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         handleTileCreation()
     }
     
-    // Update mode labels
-    func updateMode() {
-        switch mode {
-        case .moves:
-            print("moves mode")
-            // display labels
-            modeLabel.text = "moves:"
-            modeLabelValue.text = "00"
-           
-            
-            // add timer to count time elapsed
-            time.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(gameTimer), userInfo: nil, repeats: true)
-            
-        case .timed:
-            print("timed mode")
-            
-            // set time to 3 mins
-            time.timeValue = 180
-            
-            time.clock = time.timeString(interval: time.timeValue)
-            
-            // display labels
-            modeLabel.text = "time:"
-            modeLabelValue.text = time.clock
-            
-            
-            // add timer to count down from timeValue
-            time.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countdownTimer), userInfo: nil, repeats: true)
-            
-        }
-    }
-    
-    // cancel timer
-    func stopTimer() {
-        time.timer?.invalidate()
-        time.timer = nil
-    }
-    
-    // Countdown timer actions
-    @objc func countdownTimer() {
-        time.timeValue -= 1
-        score -= 2
-        time.score -= 3
-        
-        time.clock = time.timeString(interval: time.timeValue)
-        
-        print("\(time.clock)")
-        print("\(time.score)")
-        modeLabelValue.text = time.clock
-        
-        if time.timeValue <= 0 {
-            stopTimer()
-        }
-        
-        
-    }
-    
-    // Time Elapsed Counter
-    @objc func gameTimer() {
-        time.timeValue += 1
-        
-        print("\(time.timeValue)")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -355,7 +285,9 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         
         // Do any additional setup after loading the view.
         
-        updateMode()
+        // Display Game Mode 
+        time.updateGame(mode: mode, label: modeLabel, value: modeLabelValue)
+        
     }
     
 
