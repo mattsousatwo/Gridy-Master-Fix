@@ -15,7 +15,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     let manager = GameManager()
     var distributor = TileDistribution()
     let grid = GridPlacement()
-    let time = TimeManager() 
+    var time = TimeManager()
     
     // :: Variables ::
     // Game Mode
@@ -35,14 +35,8 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     
     
     // :: Timer && Moves ::
-    // timer
-    var timer: Timer?
     // variable for moves made
     var movesMade: Int = 0
-    // time value in seconds
-    var timeValue: Int = 0
-    // current time in MM:SS
-    var clock: String = ""
     // score
     var score = 1000
     // hint counter
@@ -301,44 +295,46 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
            
             
             // add timer to count time elapsed
-            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(gameTimer), userInfo: nil, repeats: true)
+            time.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(gameTimer), userInfo: nil, repeats: true)
             
         case .timed:
             print("timed mode")
             
             // set time to 3 mins
-            timeValue = 180
+            time.timeValue = 180
             
-            clock = time.timeString(interval: timeValue)
+            time.clock = time.timeString(interval: time.timeValue)
             
             // display labels
             modeLabel.text = "time:"
-            modeLabelValue.text = clock
+            modeLabelValue.text = time.clock
             
             
             // add timer to count down from timeValue
-            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countdownTimer), userInfo: nil, repeats: true)
+            time.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countdownTimer), userInfo: nil, repeats: true)
             
         }
     }
     
     // cancel timer
     func stopTimer() {
-        timer?.invalidate()
-        timer = nil
+        time.timer?.invalidate()
+        time.timer = nil
     }
     
     // Countdown timer actions
     @objc func countdownTimer() {
-        timeValue -= 1
+        time.timeValue -= 1
         score -= 2
+        time.score -= 3
         
-        clock = time.timeString(interval: timeValue)
+        time.clock = time.timeString(interval: time.timeValue)
         
-        print("\(clock)")
-        modeLabelValue.text = clock
+        print("\(time.clock)")
+        print("\(time.score)")
+        modeLabelValue.text = time.clock
         
-        if timeValue <= 0 {
+        if time.timeValue <= 0 {
             stopTimer()
         }
         
@@ -347,9 +343,9 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     
     // Time Elapsed Counter
     @objc func gameTimer() {
-        timeValue += 1
+        time.timeValue += 1
         
-        print("\(timeValue)")
+        print("\(time.timeValue)")
     }
     
     override func viewDidLoad() {

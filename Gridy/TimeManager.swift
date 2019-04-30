@@ -10,6 +10,18 @@ import UIKit
 
 struct TimeManager {
     
+    
+    
+    
+    var timer: Timer?
+    
+    var score = 1000
+    // Value of time in seconds
+    var timeValue = 0
+    // String to represent time as MM:SS
+    var clock: String = ""
+    
+    
     // func to display clock in MM:SS format
     func timeString(interval: Int) -> String {
         let minutes = interval / 60
