@@ -205,17 +205,18 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         let positionInSuperview = gesture.view?.convert(userTargetMovementArea, to: gesture.view?.superview)
         
         // Check if tile is over game grid
-        let (nearGameGrid, snapToGridLocation) = grid.isTileNear(grid: gridView, finalPosition: positionInSuperview!, positions: gridPositions)
+        let (nearGameGrid, snapToGameGridLocation) = grid.isTileNear(grid: gridView, finalPosition: positionInSuperview!, positions: gridPositions)
         
         // Check if tile is over inital tile grid
         let (nearOriginalGrid, snapToLocation) = grid.isNearTileBay(finalPosition: positionInSuperview!, positions: tilePositions)
+        
         
         
         switch gesture.state {
             
         case .began :
             
-            // Setting tiles position to currentTilePosition
+            // Setting tiles position to currentTilePosition - (position user is dragging to currently)
             tileStartingPoint = currentTilePosition
             print("movingTile")
             
@@ -229,11 +230,11 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
             if nearGameGrid == true {
                 
                 // Drop into grid position
-                print("\ndropped in snapPosition[\(snapToGridLocation)]\n")
+                print("\ndropped in snapPosition[\(snapToGameGridLocation)]\n")
                 // Bring tile to snap position - resize tile
                 UIView.animate(withDuration: 0.1, animations: {
                     // bringing tile to closest tile && scaling it to the size of the grid
-                    tile.frame = CGRect(origin: self.gridPositions[snapToGridLocation], size: CGSize(width: 87.5, height: 87.5))
+                    tile.frame = CGRect(origin: self.gridPositions[snapToGameGridLocation], size: CGSize(width: 87.5, height: 87.5))
                     // Remove shadow
                     tile.layer.shadowOpacity = 0
                 })
@@ -246,11 +247,8 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
                 tile.isInCorrectPosition = false
                 
                 // Drop into position
-                
                 print("dropped in inital grid\n")
-                
                 tile.isInCorrectPosition = false
-                
                 UIView.animate(withDuration: 0.1, animations: {
                     // bringing tile to closest tile && scaling it to the size of the grid
                     tile.frame = CGRect(origin: self.tilePositions[snapToLocation], size: CGSize(width: 54, height: 54))
@@ -261,11 +259,11 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
                 
             }
             
-            if nearGameGrid == false  {
+            // if out of grid bounds - drop in original location
+            if nearGameGrid == false && nearOriginalGrid == false {
                 
                 // Drop into originalTileLocation
-                
-                print("\nDropped Out of Bounds - back to original pos\noriginalPos = (x: \(tile.originalTileLocation!.x), y: \(tile.originalTileLocation!.y)) \n")
+                print("\nDropped Out of Bounds - back to original pos \noriginalPos = (x: \(tile.originalTileLocation!.x), y: \(tile.originalTileLocation!.y)) \n")
                 UIView.animate(withDuration: 0.1 , animations: {
                     // changes view position and size - does not place tile in original location without second tile position declaration
                     tile.frame = CGRect(origin: tile.originalTileLocation!, size: CGSize(width: 54, height: 54))
@@ -273,31 +271,24 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
                     // Remove shadow
                     tile.layer.shadowOpacity = 0
                 })
-                
-                
             }
             
             // :: if tile is in correct location ::
-            if tile.correctPosition == snapToGridLocation {
+            if tile.correctPosition == snapToGameGridLocation {
                 print("\n -- CORRECT POSITION -- n")
-                
                 tile.isInCorrectPosition = true
-                
             }
-            
             
             // Check if all tiles are in correct position
             manager.checkForCompletion(tileContainer)
             
             default:
-            print("Gesture Recognized")
-            
-            
+                print("default: Gesture Recognized")
         }
-        
-        
-        
     }
+    
+    
+    
     
     // func to easily add gestures to each tile
     func addPanGestureTo(view: UIImageView) {
@@ -308,7 +299,6 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     
-    
     // :: View Configuration ::
     // func to control tile distribution
     func handleTileCreation() {
@@ -316,12 +306,6 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         distributor.getSubviewPositions(from: initalTileGrid)
         // creating tiles & adding tiles to initalGrid
         createTiles(from: slicedImages)
-    }
-    func configurePlayfield() {
-        // adding tap gesture to hint button
-        addTapGesture()
-        // adding tiles to playfield
-        handleTileCreation()
         
         // Getting inital grid tile cordinates to allow tile placement
         tilePositions = grid.getInitalGridPositions(from: tileContainer)
@@ -329,6 +313,12 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         gridPositions = grid.createGridLocations(in: gridView)
     }
     
+    func configurePlayfield() {
+        // adding tap gesture to hint button
+        addTapGesture()
+        // adding tiles to playfield
+        handleTileCreation()
+    }
     
     func updateMode() {
         switch mode {
