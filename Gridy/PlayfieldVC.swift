@@ -12,11 +12,10 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
 
     // :: Class Reference ::
     let slicing = Slicing()
-    let capture = ImageCapture()
     let manager = GameManager()
     var distributor = TileDistribution()
     let grid = GridPlacement()
-    
+    let time = TimeManager() 
     
     // :: Variables ::
     // Game Mode
@@ -42,10 +41,13 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     var movesMade: Int = 0
     // time value in seconds
     var timeValue: Int = 0
+    // current time in MM:SS
+    var clock: String = ""
     // score
     var score = 1000
     // hint counter
     var hintCounter: Int = 0
+    
     
     
     
@@ -303,12 +305,17 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
             
         case .timed:
             print("timed mode")
-            // display labels
-            modeLabel.text = "time:"
-            modeLabelValue.text = "\(timeValue)"
             
             // set time to 3 mins
             timeValue = 180
+            
+            clock = time.timeString(interval: timeValue)
+            
+            // display labels
+            modeLabel.text = "time:"
+            modeLabelValue.text = clock
+            
+            
             // add timer to count down from timeValue
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countdownTimer), userInfo: nil, repeats: true)
             
@@ -326,8 +333,16 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         timeValue -= 1
         score -= 2
         
-        print("\(timeValue)")
-        modeLabelValue.text = "\(timeValue)"
+        clock = time.timeString(interval: timeValue)
+        
+        print("\(clock)")
+        modeLabelValue.text = clock
+        
+        if timeValue <= 0 {
+            stopTimer()
+        }
+        
+        
     }
     
     // Time Elapsed Counter

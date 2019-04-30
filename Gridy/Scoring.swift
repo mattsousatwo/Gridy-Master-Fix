@@ -56,37 +56,6 @@ class Scoring {
         }
     }
     
-
-    // func to display game mode
-        // displayGameMode()
-    func displayGameMode(from mode: GameManager.GameMode, label displayLabel: UILabel, value displayValue: UILabel) {
-        
-        switch mode {
-        case .moves:
-            print("moves mode")
-            // display labels
-            displayLabel.text = "moves:"
-            displayValue.text = "\(movesMade)"
-            // set time value
-            timeValue = 0
-            
-            // add timer to count time elapsed
-            
-        case .timed:
-            print("timed mode")
-            // display labels
-            displayLabel.text = "time:"
-            displayValue.text = "\(movesMade)"
-            // set time value
-                // set to 3 mins in seconds
-            timeValue = 180
-            
-            // add timer to count down from timeValue
-            
-        }
-        
-        
-    }
     
     
     // Func to control Timer Countdown - to determine time passed in game

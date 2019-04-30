@@ -17,6 +17,7 @@
 		619ECA7B226FB1E300204B09 /* ImageCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619ECA7A226FB1E300204B09 /* ImageCapture.swift */; };
 		619ECA7D226FD33200204B09 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619ECA7C226FD33200204B09 /* GameManager.swift */; };
 		61A96A8E2272B73E00B4B170 /* Scoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A96A8D2272B73E00B4B170 /* Scoring.swift */; };
+		61B74C3622780F40008BC3B2 /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B74C3522780F40008BC3B2 /* TimeManager.swift */; };
 		61DBA69B219C976E00384503 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DBA69A219C976E00384503 /* AppDelegate.swift */; };
 		61DBA6A0219C976E00384503 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61DBA69E219C976E00384503 /* Main.storyboard */; };
 		61DBA6A2219C976F00384503 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61DBA6A1219C976F00384503 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 		619ECA7A226FB1E300204B09 /* ImageCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageCapture.swift; path = Gridy/ImageCapture.swift; sourceTree = SOURCE_ROOT; };
 		619ECA7C226FD33200204B09 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameManager.swift; path = Gridy/GameManager.swift; sourceTree = SOURCE_ROOT; };
 		61A96A8D2272B73E00B4B170 /* Scoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Scoring.swift; path = Gridy/Scoring.swift; sourceTree = SOURCE_ROOT; };
+		61B74C3522780F40008BC3B2 /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimeManager.swift; path = Gridy/TimeManager.swift; sourceTree = SOURCE_ROOT; };
 		61DBA697219C976E00384503 /* Gridy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gridy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61DBA69A219C976E00384503 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Gridy/AppDelegate.swift; sourceTree = "<group>"; };
 		61DBA69F219C976E00384503 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				619ECA7C226FD33200204B09 /* GameManager.swift */,
 				61147DAD2270EEFD00FAAA82 /* GridPlacement.swift */,
 				61A96A8D2272B73E00B4B170 /* Scoring.swift */,
+				61B74C3522780F40008BC3B2 /* TimeManager.swift */,
 			);
 			name = Model;
 			path = Gridy/Model;
@@ -197,6 +200,7 @@
 			files = (
 				618C741821AF341D003A62D2 /* HomeVC.swift in Sources */,
 				619ECA7D226FD33200204B09 /* GameManager.swift in Sources */,
+				61B74C3622780F40008BC3B2 /* TimeManager.swift in Sources */,
 				61DBA69B219C976E00384503 /* AppDelegate.swift in Sources */,
 				613459E4226D9B370062F67C /* FramingVC.swift in Sources */,
 				619ECA77226FAE8400204B09 /* Tile.swift in Sources */,
