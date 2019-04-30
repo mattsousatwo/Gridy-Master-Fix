@@ -80,61 +80,11 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     
     // Func to display hint image
     @objc func showHint(_ sender: UITapGestureRecognizer) {
-        print("\n ^%^ Show Hint\n")
-        
-        // add onto number of times hint has been pressed
-      //  gameStructure.hintCounter += 1
-        
-        // add blur view
-        let blur = UIVisualEffectView()
-        blur.frame = self.view.frame
-        blur.effect = UIBlurEffect(style: .regular)
-        self.view.addSubview(blur)
-        
-        // Game Image height & width for frame sizing
-        let imgWidth = gameImage.size.width
-        let imgHeight = gameImage.size.height
-        
-        // set frame
-        let previewImageView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: imgWidth + 25, height: imgHeight + 25))
-        let imageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: imgWidth, height: imgHeight))
-        
-        // add view
-        self.view.addSubview(previewImageView)
-        previewImageView.addSubview(imageView)
-        
-        // set game image to the preview imageView
-        imageView.image = gameImage
-        
-        // set frame attributes
-        previewImageView.layer.cornerRadius = 10
-        imageView.layer.cornerRadius = 10
-        // set background color
-        previewImageView.backgroundColor = #colorLiteral(red: 0.1350251588, green: 0.2111370802, blue: 0.1540531392, alpha: 1)
-        // center views
-        imageView.center = previewImageView.center
-        previewImageView.center = CGPoint(x: self.view.center.x, y: self.view.center.y)
-        
-        view.bringSubviewToFront(previewImageView)
-        
-        // animate presentation in
-        UIView.animate(withDuration: 0.4, delay: 0.2, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
-            
-            previewImageView.center = self.view.center
-        }) { (success) in }
-        
-        // animate presentation out
-        UIView.animate(withDuration: 0.5, delay: 1.2, options: .curveEaseIn, animations: {
-            
-            // move previewImageView off screen
-            previewImageView.center = CGPoint(x: self.view.center.x + (self.view.frame.width * 2), y: self.view.center.y)
-            
-            // remove blurView
-            blur.effect = nil
-            blur.isUserInteractionEnabled = false
-            
-        }, completion: { (success) in })
-        
+    // display Hint
+    manager.displayHint(image: gameImage, in: self.view)
+    // update hint counter
+    hintCounter += 1
+        print("- Hint Counter: \(hintCounter)\n")
     }
     
     // Create Tiles and add tiles to inital Grid
