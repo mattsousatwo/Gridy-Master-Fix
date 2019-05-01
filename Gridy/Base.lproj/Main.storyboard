@@ -571,6 +571,7 @@
                                         <state key="normal" title="Play Again"/>
                                         <connections>
                                             <action selector="playAgainButtonPressed:" destination="fXC-kZ-3F2" eventType="touchUpInside" id="5Vg-EY-Ozt"/>
+                                            <segue destination="R4g-gj-Kmh" kind="unwind" unwindAction="unwindToHomeWithUnwindSegue:" id="ST9-5W-R0A"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQ9-zV-rja">
@@ -648,6 +649,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g2O-kc-szI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="R4g-gj-Kmh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2479" y="31"/>
         </scene>
