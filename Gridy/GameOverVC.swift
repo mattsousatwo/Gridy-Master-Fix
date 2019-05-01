@@ -12,6 +12,7 @@ class GameOverVC: UIViewController {
     
     // :: Refrences ::
     let animations = GOAnimations()
+    let time = TimeManager()
     
     // :: Variables ::
     // mode
@@ -75,13 +76,13 @@ class GameOverVC: UIViewController {
             scoreLabel.text = "Moves"
             scoreLabelValue.text = "\(movesCount)"
             timeLabel.text = "Time Elapsed"
-            timeLabelValue.text = "\(timeElapsed)"
+            timeLabelValue.text = time.timeString(interval: timeElapsed)
         case .timed:
             print("- present timed scoreboard")
             scoreLabel.text = "Score"
             scoreLabelValue.text = "\(finalScore)"
             timeLabel.text = "Time Left"
-            timeLabelValue.text = "\(timeLeft)"
+            timeLabelValue.text = time.timeString(interval: timeLeft)
         }
     }
     

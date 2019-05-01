@@ -556,9 +556,10 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="SwS-PX-Oc5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="93V-fD-y7f" secondAttribute="trailing" constant="100" id="HOS-xc-Ivu"/>
                                             <constraint firstItem="SwS-PX-Oc5" firstAttribute="top" secondItem="bCR-p5-NXP" secondAttribute="top" constant="4" id="In8-y6-2XQ"/>
                                             <constraint firstAttribute="bottom" secondItem="93V-fD-y7f" secondAttribute="bottom" constant="4" id="UAj-WE-fGv"/>
-                                            <constraint firstItem="SwS-PX-Oc5" firstAttribute="leading" secondItem="93V-fD-y7f" secondAttribute="trailing" constant="151" id="cZy-LQ-GuB"/>
+                                            <constraint firstItem="SwS-PX-Oc5" firstAttribute="leading" relation="lessThanOrEqual" secondItem="93V-fD-y7f" secondAttribute="trailing" constant="151" id="cZy-LQ-GuB"/>
                                             <constraint firstAttribute="bottom" secondItem="SwS-PX-Oc5" secondAttribute="bottom" constant="4" id="e2k-7p-8pn"/>
                                             <constraint firstItem="93V-fD-y7f" firstAttribute="top" secondItem="bCR-p5-NXP" secondAttribute="top" constant="4" id="gQS-Mq-OX2"/>
                                             <constraint firstAttribute="trailing" secondItem="SwS-PX-Oc5" secondAttribute="trailing" constant="8" id="kPu-rG-2YD"/>
