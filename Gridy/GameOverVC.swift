@@ -10,10 +10,33 @@ import UIKit
 
 class GameOverVC: UIViewController {
 
+    // view to display game image
+    @IBOutlet weak var gameImageView: UIImageView!
+    // view to contain scores
+    @IBOutlet weak var scoreboard: UIView!
+    // score label
+    @IBOutlet weak var sbLabelOne: UIView!
+    // time left label
+    @IBOutlet weak var sbLabelTwo: UIView!
+    // hint pressed label
+    @IBOutlet weak var sbLabelThree: UIView!
+    // play again outlet
+    @IBOutlet weak var playAgainButton: UIButton!
+    // share outlet
+    @IBOutlet weak var shareButton: UIButton!
+    // play again action
+    @IBAction func playAgainButtonPressed(_ sender: Any) {
+        
+    }
+    // share action 
+    @IBAction func shareButtonPressed(_ sender: Any) {
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
 

@@ -569,11 +569,17 @@
                                         <rect key="frame" x="8" y="197" width="299" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Play Again"/>
+                                        <connections>
+                                            <action selector="playAgainButtonPressed:" destination="fXC-kZ-3F2" eventType="touchUpInside" id="5Vg-EY-Ozt"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQ9-zV-rja">
                                         <rect key="frame" x="327" y="198" width="40" height="30"/>
                                         <color key="backgroundColor" red="1" green="0.90453329859999998" blue="0.94742275070000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Share"/>
+                                        <connections>
+                                            <action selector="shareButtonPressed:" destination="fXC-kZ-3F2" eventType="touchUpInside" id="Hms-6v-NPk"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Game Over" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfz-fR-VyP">
                                         <rect key="frame" x="8" y="10" width="359" height="48"/>
@@ -628,6 +634,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RxF-gj-1ro"/>
                     </view>
+                    <connections>
+                        <outlet property="gameImageView" destination="x2J-6A-dUq" id="7wm-nN-nep"/>
+                        <outlet property="playAgainButton" destination="mtx-ip-geL" id="pmW-tC-SUm"/>
+                        <outlet property="sbLabelOne" destination="Lf5-MZ-Qhw" id="ROr-3F-jBh"/>
+                        <outlet property="sbLabelThree" destination="s7a-fY-MdY" id="Afq-E4-Zh8"/>
+                        <outlet property="sbLabelTwo" destination="bCR-p5-NXP" id="TKN-cx-Pbo"/>
+                        <outlet property="scoreboard" destination="1D5-Qa-E4f" id="fnd-8X-OlG"/>
+                        <outlet property="shareButton" destination="wQ9-zV-rja" id="Dl5-GR-953"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g2O-kc-szI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

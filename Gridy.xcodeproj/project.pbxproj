@@ -19,6 +19,7 @@
 		61B74C3622780F40008BC3B2 /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B74C3522780F40008BC3B2 /* TimeManager.swift */; };
 		61B74C3822781E8A008BC3B2 /* MovesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B74C3722781E8A008BC3B2 /* MovesManager.swift */; };
 		61B74C3A2278D841008BC3B2 /* GameOverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B74C392278D841008BC3B2 /* GameOverVC.swift */; };
+		61BC9E5022794A280061C01B /* GameOverAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BC9E4F22794A280061C01B /* GameOverAnimations.swift */; };
 		61DBA69B219C976E00384503 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DBA69A219C976E00384503 /* AppDelegate.swift */; };
 		61DBA6A0219C976E00384503 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61DBA69E219C976E00384503 /* Main.storyboard */; };
 		61DBA6A2219C976F00384503 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61DBA6A1219C976F00384503 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 		61B74C3522780F40008BC3B2 /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimeManager.swift; path = Gridy/TimeManager.swift; sourceTree = SOURCE_ROOT; };
 		61B74C3722781E8A008BC3B2 /* MovesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MovesManager.swift; path = Gridy/MovesManager.swift; sourceTree = SOURCE_ROOT; };
 		61B74C392278D841008BC3B2 /* GameOverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameOverVC.swift; path = Gridy/GameOverVC.swift; sourceTree = "<group>"; };
+		61BC9E4F22794A280061C01B /* GameOverAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameOverAnimations.swift; path = Gridy/GameOverAnimations.swift; sourceTree = SOURCE_ROOT; };
 		61DBA697219C976E00384503 /* Gridy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gridy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61DBA69A219C976E00384503 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Gridy/AppDelegate.swift; sourceTree = "<group>"; };
 		61DBA69F219C976E00384503 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				61147DAD2270EEFD00FAAA82 /* GridPlacement.swift */,
 				61B74C3522780F40008BC3B2 /* TimeManager.swift */,
 				61B74C3722781E8A008BC3B2 /* MovesManager.swift */,
+				61BC9E4F22794A280061C01B /* GameOverAnimations.swift */,
 			);
 			name = Model;
 			path = Gridy/Model;
@@ -207,6 +210,7 @@
 				61B74C3622780F40008BC3B2 /* TimeManager.swift in Sources */,
 				61DBA69B219C976E00384503 /* AppDelegate.swift in Sources */,
 				613459E4226D9B370062F67C /* FramingVC.swift in Sources */,
+				61BC9E5022794A280061C01B /* GameOverAnimations.swift in Sources */,
 				619ECA77226FAE8400204B09 /* Tile.swift in Sources */,
 				61147DAE2270EEFD00FAAA82 /* GridPlacement.swift in Sources */,
 				619ECA7B226FB1E300204B09 /* ImageCapture.swift in Sources */,
