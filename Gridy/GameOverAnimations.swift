@@ -21,17 +21,29 @@ struct GOAnimations {
     // bring scoreboard on screen
     func present(scoreboard: UIView) {
         
+        let origin = scoreboard.frame.origin
+        // animate view off screen
+        UIView.animate(withDuration: 0.0, animations: {
+            scoreboard.frame.origin = CGPoint(x: origin.x, y: origin.y + 250)
+        })
+       // animate view on screen
+        UIView.animate(withDuration: 2.0, delay: 0.1, options: .curveEaseOut, animations: {
+            scoreboard.frame.origin = CGPoint(x: origin.x, y: origin.y - 250)
+            
+            }, completion: nil)
+        
+    }
+    
+    // func to display scoreboard labels
+    func presentScoreboard(label: UILabel, labelTwo: UILabel, labelThree: UILabel, mode: GameManager.GameMode) {
+        
+        
     }
     
     // bring image on screen
     func presentGame(image: UIView) {
         
     }
-    
-    
-    
-    
-    
     
     
     

@@ -278,6 +278,20 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GameOverSegue" {
+            
+            let nextVC = segue.destination as! GameOverVC
+            
+            // send over data to next view
+            nextVC.gameMode = mode
+            
+            
+            
+        }
+    }
+    
 
     /*
     // MARK: - Navigation

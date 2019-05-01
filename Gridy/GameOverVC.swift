@@ -13,8 +13,26 @@ class GameOverVC: UIViewController {
     // :: Refrences ::
     let animations = GOAnimations()
     
+    // :: Variables ::
+    // mode
+    var gameMode: GameManager.GameMode = .moves
     
-
+    
+    
+    // # of times hint was pressed
+    var hintCount = 0
+    // :: Time Scoreboard Values ::
+    // score value
+    var finalScore = 0
+    // time value
+    var timeLeft = 0
+    // :: Moves Scoreboard Values ::
+    // moves counter
+    var movesCount = 0
+    // time elapsed
+    var timeElapsed = 0
+    
+    
     // :: Outlets ::
     // view to display game image
     @IBOutlet weak var gameImageView: UIImageView!
@@ -41,9 +59,31 @@ class GameOverVC: UIViewController {
         print("- shareButton")
     }
     
+    
+    // bring scoreboard on screen
+    func present(scoreboard: UIView) {
+        
+        var origin = scoreboard.frame.origin
+        // animate view off screen
+        UIView.animate(withDuration: 0.0, animations: {
+            origin.x = origin.x + 250
+        })
+        // animate view on screen
+        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
+            origin.x = origin.x - 250
+            
+            self.view.layoutIfNeeded()
+            
+        }, completion: nil)
+        
+        
+    }
+    
     // :: Configuration ::
     func configureView() {
+        // round top edges of scoreboard 
         animations.roundEdges(of: scoreboard)
+        present(scoreboard: scoreboard)
     }
     
     override func viewDidLoad() {
