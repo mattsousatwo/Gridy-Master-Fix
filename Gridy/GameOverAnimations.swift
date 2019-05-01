@@ -10,7 +10,6 @@ import UIKit
 
 struct GOAnimations {
     
-    
     // round top edges
     func roundEdges(of view: UIView) {
         view.layer.cornerRadius = 10
@@ -31,12 +30,6 @@ struct GOAnimations {
             scoreboard.frame.origin = CGPoint(x: origin.x, y: origin.y - 250)
             
             }, completion: nil)
-        
-    }
-    
-    // func to display scoreboard labels
-    func presentScoreboard(label: UILabel, labelTwo: UILabel, labelThree: UILabel, mode: GameManager.GameMode) {
-        
         
     }
     

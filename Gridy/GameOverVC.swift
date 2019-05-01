@@ -16,9 +16,8 @@ class GameOverVC: UIViewController {
     // :: Variables ::
     // mode
     var gameMode: GameManager.GameMode = .moves
-    
-    
-    
+    // game image
+    var gameImage = UIImage()
     // # of times hint was pressed
     var hintCount = 0
     // :: Time Scoreboard Values ::
@@ -38,12 +37,16 @@ class GameOverVC: UIViewController {
     @IBOutlet weak var gameImageView: UIImageView!
     // view to contain scores
     @IBOutlet weak var scoreboard: UIView!
-    // score label
-    @IBOutlet weak var sbLabelOne: UIView!
-    // time left label
-    @IBOutlet weak var sbLabelTwo: UIView!
+    // score / moves label
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var scoreLabelValue: UILabel!
+    // time left / time elapsed label
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var timeLabelValue: UILabel!
     // hint pressed label
-    @IBOutlet weak var sbLabelThree: UIView!
+    @IBOutlet weak var hintCountLabel: UILabel!
+    @IBOutlet weak var hintCountLabelValue: UILabel!
+    
     // play again outlet
     @IBOutlet weak var playAgainButton: UIButton!
     // share outlet
@@ -60,30 +63,34 @@ class GameOverVC: UIViewController {
     }
     
     
-    // bring scoreboard on screen
-    func present(scoreboard: UIView) {
+    // func to display scoreboard labels
+    func presentScoreboardLabels() {
         
-        var origin = scoreboard.frame.origin
-        // animate view off screen
-        UIView.animate(withDuration: 0.0, animations: {
-            origin.x = origin.x + 250
-        })
-        // animate view on screen
-        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
-            origin.x = origin.x - 250
-            
-            self.view.layoutIfNeeded()
-            
-        }, completion: nil)
+        gameImageView.image = gameImage
+        hintCountLabelValue.text = "\(hintCount)"
         
-        
+        switch gameMode {
+        case .moves:
+            print("- present moves scoreboard")
+            scoreLabel.text = "Moves"
+            scoreLabelValue.text = "\(movesCount)"
+            timeLabel.text = "Time Elapsed"
+            timeLabelValue.text = "\(timeElapsed)"
+        case .timed:
+            print("- present timed scoreboard")
+            scoreLabel.text = "Score"
+            scoreLabelValue.text = "\(finalScore)"
+            timeLabel.text = "Time Left"
+            timeLabelValue.text = "\(timeLeft)"
+        }
     }
     
     // :: Configuration ::
     func configureView() {
         // round top edges of scoreboard 
         animations.roundEdges(of: scoreboard)
-        present(scoreboard: scoreboard)
+        
+        presentScoreboardLabels()
     }
     
     override func viewDidLoad() {

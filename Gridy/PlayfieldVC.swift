@@ -286,8 +286,16 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
             
             // send over data to next view
             nextVC.gameMode = mode
-            
-            
+            nextVC.gameImage = gameImage
+            nextVC.hintCount = moves.hintCounter
+            switch mode {
+            case .moves:
+                nextVC.movesCount = moves.movesMade
+                nextVC.timeElapsed = time.timeValue
+            case .timed:
+                nextVC.finalScore = time.score
+                nextVC.timeLeft = time.timeValue
+            }
             
         }
     }

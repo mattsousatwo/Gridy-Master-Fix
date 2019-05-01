@@ -636,12 +636,15 @@
                     </view>
                     <connections>
                         <outlet property="gameImageView" destination="x2J-6A-dUq" id="7wm-nN-nep"/>
+                        <outlet property="hintCountLabel" destination="4DA-pW-QWk" id="7ea-x5-RMN"/>
+                        <outlet property="hintCountLabelValue" destination="lHx-Kl-aIp" id="bYK-LW-ZfX"/>
                         <outlet property="playAgainButton" destination="mtx-ip-geL" id="pmW-tC-SUm"/>
-                        <outlet property="sbLabelOne" destination="Lf5-MZ-Qhw" id="ROr-3F-jBh"/>
-                        <outlet property="sbLabelThree" destination="s7a-fY-MdY" id="Afq-E4-Zh8"/>
-                        <outlet property="sbLabelTwo" destination="bCR-p5-NXP" id="TKN-cx-Pbo"/>
+                        <outlet property="scoreLabel" destination="CGE-oT-GzF" id="j7B-o8-Yto"/>
+                        <outlet property="scoreLabelValue" destination="15T-MO-58S" id="eY5-Uy-bOO"/>
                         <outlet property="scoreboard" destination="1D5-Qa-E4f" id="fnd-8X-OlG"/>
                         <outlet property="shareButton" destination="wQ9-zV-rja" id="Dl5-GR-953"/>
+                        <outlet property="timeLabel" destination="93V-fD-y7f" id="evR-v9-4GS"/>
+                        <outlet property="timeLabelValue" destination="SwS-PX-Oc5" id="PCs-Do-Ij0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g2O-kc-szI" userLabel="First Responder" sceneMemberID="firstResponder"/>
