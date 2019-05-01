@@ -188,12 +188,15 @@ class FramingVC: UIViewController, UIGestureRecognizerDelegate {
     // Passing Data to the next ViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
+        if segue.identifier == "FramingToPlayfield" {
         let nextVC = segue.destination as! PlayfieldVC
 
         // Send data over to next view controller
         nextVC.gameImage = image
         nextVC.slicedImages = imageArray
-        nextVC.mode = mode 
+        nextVC.mode = mode
+            
+        }
     }
 
     // :: Set Game Mode ::

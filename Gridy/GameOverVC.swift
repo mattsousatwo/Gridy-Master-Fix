@@ -9,7 +9,13 @@
 import UIKit
 
 class GameOverVC: UIViewController {
+    
+    // :: Refrences ::
+    let animations = GOAnimations()
+    
+    
 
+    // :: Outlets ::
     // view to display game image
     @IBOutlet weak var gameImageView: UIImageView!
     // view to contain scores
@@ -24,19 +30,26 @@ class GameOverVC: UIViewController {
     @IBOutlet weak var playAgainButton: UIButton!
     // share outlet
     @IBOutlet weak var shareButton: UIButton!
+    
+    // :: Buttons ::
     // play again action
     @IBAction func playAgainButtonPressed(_ sender: Any) {
-        
+        print("- playAgain")
     }
-    // share action 
+    // share action
     @IBAction func shareButtonPressed(_ sender: Any) {
-        
+        print("- shareButton")
     }
     
+    // :: Configuration ::
+    func configureView() {
+        animations.roundEdges(of: scoreboard)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureView()
     }
     
 

@@ -230,6 +230,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
             if completion == true {
                 print("completion == true - stopTimer()")
                 time.stopTimer()
+                performSegue(withIdentifier: "GameOverSegue", sender: self)
             }
             
             default:
@@ -271,8 +272,6 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         
        configurePlayfield()
-        
-        // Do any additional setup after loading the view.
         
         // Display Game Mode 
         time.updateGame(mode: mode, label: modeLabel, value: modeLabelValue)
