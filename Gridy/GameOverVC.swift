@@ -31,6 +31,8 @@ class GameOverVC: UIViewController {
     var movesCount = 0
     // time elapsed
     var timeElapsed = 0
+    // message to be shared
+    var shareMessage = ""
     
     
     // :: Outlets ::
@@ -61,6 +63,14 @@ class GameOverVC: UIViewController {
     // share action
     @IBAction func shareButtonPressed(_ sender: Any) {
         print("- shareButton")
+        let message = shareMessage
+        let image = gameImage
+        let items = [image as Any, message as Any]
+        
+        let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        present(activityVC, animated: true, completion: nil)
+        print(message)
+        
     }
     
     
@@ -77,12 +87,16 @@ class GameOverVC: UIViewController {
             scoreLabelValue.text = "\(movesCount)"
             timeLabel.text = "Time Elapsed"
             timeLabelValue.text = time.timeString(interval: timeElapsed)
+            // produce share message
+            shareMessage = "I finished this puzzle in \(movesCount) moves and only in \(timeElapsed) minutes!"
         case .timed:
             print("- present timed scoreboard")
             scoreLabel.text = "Score"
             scoreLabelValue.text = "\(finalScore)"
             timeLabel.text = "Time Left"
             timeLabelValue.text = time.timeString(interval: timeLeft)
+            // produce share message
+            shareMessage = "I scored \(finalScore) points with only \(timeLeft) left!"
         }
     }
     
