@@ -36,7 +36,7 @@ class TimeManager {
     
     
     // Update mode labels
-    func updateGame(mode: GameManager.GameMode, label: UILabel, value: UILabel) {
+    func updateGame(mode: GameManager.GameMode, label: UILabel, value: UILabel, controller: UIViewController ) {
         switch mode {
         case .moves:
             print("moves mode")
@@ -60,7 +60,9 @@ class TimeManager {
             
             
             // add timer to count down from timeValue
-            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countdownTimer), userInfo: value, repeats: true)
+            // use value to display time value
+            // use controller to preformSegue
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countdownTimer), userInfo: (value, controller), repeats: true)
             
         }
     }
@@ -72,7 +74,7 @@ class TimeManager {
     
         clock = timeString(interval: timeValue)
         
-        guard let valueLabel = timer?.userInfo as? UILabel else {
+        guard let (valueLabel, controller) = timer?.userInfo as? (UILabel, UIViewController) else {
             print("-- countdownTimer.userInfo not registered")
             return
         }
@@ -83,6 +85,7 @@ class TimeManager {
             stopTimer()
             
             // go to next VC
+            controller.performSegue(withIdentifier: "GameOverSegue", sender: self)
         }
         
     }

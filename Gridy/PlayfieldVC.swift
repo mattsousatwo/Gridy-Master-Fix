@@ -303,7 +303,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
        configurePlayfield()
         
         // Display Game Mode 
-        time.updateGame(mode: mode, label: modeLabel, value: modeLabelValue)
+        time.updateGame(mode: mode, label: modeLabel, value: modeLabelValue, controller: self)
         
     }
     
