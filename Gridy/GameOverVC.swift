@@ -10,7 +10,7 @@ import UIKit
 
 class GameOverVC: UIViewController {
     
-    // :: Refrences ::
+    // :: References ::
     let animations = GOAnimations()
     let time = TimeManager()
     

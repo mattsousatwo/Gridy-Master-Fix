@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
 
@@ -16,7 +17,8 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     var distributor = TileDistribution()
     let grid = GridPlacement()
     var time = TimeManager()
-    var moves = MovesManager() 
+    var moves = MovesManager()
+    var audioPlayer = AVAudioPlayer()
     
     // :: Variables ::
     // Game Mode
@@ -33,6 +35,12 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     var tilePositions = [CGPoint]()
     // Container to store grid positions
     var gridPositions = [CGPoint]()
+
+    // Sound File Names
+    let correctPosition = "Tab1"
+    let outOfBounds = "Error 4"
+    let gameComplete = "Success 2"
+
 
     // :: Outlets ::
     // Eye Image to display Hint Image
@@ -117,6 +125,21 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         hintButton.addGestureRecognizer(tapGesture)
         // setting gesture delegate to self
         tapGesture.delegate = self
+    }
+
+    // play sound with specified file name
+    func play(sound: String) {
+        let path = Bundle.main.path(forResource: sound, ofType: "m4a")
+        let url = URL(fileURLWithPath: path!)
+        do {
+                audioPlayer = try AVAudioPlayer(contentsOf: url)
+                audioPlayer.play()
+                print(" -- play sound \(sound)")
+        } catch {
+            print("- no sound file found")
+        }
+
+
     }
     
     // function to handle moving tiles & dropping tiles onto each grid
@@ -206,7 +229,9 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
             
             // if out of grid bounds - drop in original location
             if nearGameGrid == false && nearOriginalGrid == false {
-                
+                // Play out of bounds sound
+                play(sound: outOfBounds)
+
                 // Drop into originalTileLocation
                 print("\nDropped Out of Bounds - back to original pos \noriginalPos = (x: \(tile.originalTileLocation!.x), y: \(tile.originalTileLocation!.y)) \n")
                 UIView.animate(withDuration: 0.1 , animations: {
@@ -222,6 +247,8 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
             if tile.correctPosition == snapToGameGridLocation {
                 print("\n -- CORRECT POSITION -- n")
                 tile.isInCorrectPosition = true
+                // play correct position sound
+                play(sound: correctPosition)
             }
             
             // Check if all tiles are in correct position
@@ -231,6 +258,8 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
                 print("completion == true - stopTimer()")
                 time.stopTimer()
                 performSegue(withIdentifier: "GameOverSegue", sender: self)
+                // play game over sound
+                play(sound: gameComplete)
             }
             
             default:
