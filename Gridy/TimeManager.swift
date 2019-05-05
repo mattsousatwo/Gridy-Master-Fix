@@ -25,7 +25,7 @@ class TimeManager {
         let minutes = interval / 60
         let seconds = interval % 60
         
-        return String.init(format: "%02i:%02i", minutes, seconds)
+        return String.init(format: "%01i:%02i", minutes, seconds)
     }
     
     // Stop Timer
@@ -50,7 +50,7 @@ class TimeManager {
             
         case .timed:
             print("timed mode")
-            // set time to 3 mins
+            // set time to 3 mins - 180 sec
             timeValue = 180
             clock = timeString(interval: timeValue)
             

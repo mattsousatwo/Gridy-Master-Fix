@@ -248,16 +248,16 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="252" image="Gridy-name-small-green" translatesAutoresizingMaskIntoConstraints="NO" id="pfd-oe-MV7">
-                                <rect key="frame" x="145" y="26" width="16" height="16"/>
+                                <rect key="frame" x="145" y="26" width="70" height="34"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" horizontalCompressionResistancePriority="1000" text="Moves" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZt-mB-Th5">
-                                <rect key="frame" x="181" y="30" width="60" height="24"/>
+                                <rect key="frame" x="235" y="30" width="60" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="1000" text="03:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="QjV-FV-IhN">
-                                <rect key="frame" x="251" y="25" width="112" height="33"/>
+                                <rect key="frame" x="305" y="25" width="58" height="33"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -407,7 +407,7 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="co0-9J-GUG">
                                 <rect key="frame" x="14" y="310" width="347" height="347"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -642,6 +642,7 @@
                     </view>
                     <connections>
                         <outlet property="gameImageView" destination="x2J-6A-dUq" id="7wm-nN-nep"/>
+                        <outlet property="gameOverLabel" destination="vfz-fR-VyP" id="7Vh-mV-ARb"/>
                         <outlet property="hintCountLabel" destination="4DA-pW-QWk" id="7ea-x5-RMN"/>
                         <outlet property="hintCountLabelValue" destination="lHx-Kl-aIp" id="bYK-LW-ZfX"/>
                         <outlet property="playAgainButton" destination="mtx-ip-geL" id="pmW-tC-SUm"/>

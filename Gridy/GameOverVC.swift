@@ -19,6 +19,8 @@ class GameOverVC: UIViewController {
     var gameMode: GameManager.GameMode = .moves
     // game image
     var gameImage = UIImage()
+    // Game Over Label Text
+    var gameOverDisplay = ""
     // # of times hint was pressed
     var hintCount = 0
     // :: Time Scoreboard Values ::
@@ -40,6 +42,8 @@ class GameOverVC: UIViewController {
     @IBOutlet weak var gameImageView: UIImageView!
     // view to contain scores
     @IBOutlet weak var scoreboard: UIView!
+    // Game Over Label
+    @IBOutlet weak var gameOverLabel: UILabel!
     // score / moves label
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var scoreLabelValue: UILabel!
@@ -79,6 +83,7 @@ class GameOverVC: UIViewController {
         
         gameImageView.image = gameImage
         hintCountLabelValue.text = "\(hintCount)"
+        gameOverLabel.text = "\(gameOverDisplay)"
         
         switch gameMode {
         case .moves:

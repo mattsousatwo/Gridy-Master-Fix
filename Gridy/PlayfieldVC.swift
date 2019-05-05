@@ -19,6 +19,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     var time = TimeManager()
     var moves = MovesManager()
     var audioPlayer = AVAudioPlayer()
+    let capture = ImageCapture()
     
     // :: Variables ::
     // Game Mode
@@ -35,6 +36,10 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     var tilePositions = [CGPoint]()
     // Container to store grid positions
     var gridPositions = [CGPoint]()
+    // Check if all tiles are in correct position
+    var isPuzzleComplete: Bool = false
+    // image to hold unfinished puzzle 
+    var incompletePuzzle = UIImage()
 
     // Sound File Names
     let correctPosition = "Tab1"
@@ -251,15 +256,17 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
                 play(sound: correctPosition)
             }
             
-            // Check if all tiles are in correct position
-            let completion = manager.checkForCompletion(tileContainer)
+            // Check if tiles are in correct spacing
+            isPuzzleComplete = manager.checkForCompletion(tileContainer)
             // if all tiles are in correct position stop timer
-            if completion == true {
+            if isPuzzleComplete == true {
                 print("completion == true - stopTimer()")
                 time.stopTimer()
                 performSegue(withIdentifier: "GameOverSegue", sender: self)
                 // play game over sound
                 play(sound: gameComplete)
+            } else {
+                incompletePuzzle = capture.takeScreenshot(from: self.view)!
             }
             
             default:
@@ -317,14 +324,33 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
             nextVC.gameMode = mode
             nextVC.gameImage = gameImage
             nextVC.hintCount = moves.hintCounter
-            switch mode {
-            case .moves:
-                nextVC.movesCount = moves.movesMade
-                nextVC.timeElapsed = time.timeValue
-            case .timed:
-                nextVC.finalScore = time.score
-                nextVC.timeLeft = time.timeValue
+            switch isPuzzleComplete {
+            // True: Complete Puzzle
+            case true:
+                print("Game Complete")
+                nextVC.gameImage = gameImage
+                nextVC.gameOverDisplay = "Winner!"
+                
+                // Display Game Data for Moves mode(movesCount, timeElapsed) or Timed Mode(score, timeLeft)
+                switch mode {
+                case .moves:
+                    nextVC.movesCount = moves.movesMade
+                    nextVC.timeElapsed = time.timeValue
+                case .timed:
+                    nextVC.finalScore = time.score
+                    nextVC.timeLeft = time.timeValue
+                }
+                
+            // False: Incomplete Puzzle
+            case false:
+                print("Times Up!")
+                // send over image of last move in playfieldvc 
+                nextVC.gameImage = incompletePuzzle
+                // score = 0 for not completing puzzle
+                nextVC.finalScore = 0
+                nextVC.shareMessage = "I was so close to completing this puzzle using Gridy."
             }
+            
             
         }
     }

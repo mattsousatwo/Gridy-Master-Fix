@@ -54,7 +54,7 @@ class FramingVC: UIViewController, UIGestureRecognizerDelegate {
     // Action Outlet for the start button - take image, slice image, go to PlayfieldVC
     @IBAction func startButtonPressed(_ sender: Any) {
         // Capture Image from captureArea
-        image = capture.captureImage(from: captureArea)
+        image = capture.captureImage(from: captureArea) 
         
         // Slice Image
         print("~x~ SliceImage()")
