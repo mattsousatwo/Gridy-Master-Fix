@@ -20,10 +20,9 @@ class GameManager {
     }
     
     
-    
     // :: Check for Completion
     // Check if all tiles are in correct positions
-    func checkForCompletion(_ array: [Tile]) -> Bool {
+    func checkForCompletion(_ array: [Tile]) -> Bool { 
         
         // If all tiles in tile container are in correct tile position return true
         let allTilesCorrect = array.allSatisfy { $0.isInCorrectPosition == true }
@@ -31,15 +30,6 @@ class GameManager {
         // If tiles are in correct position go to game over screen
         if allTilesCorrect == true {
             print("\n*** All in Correct Positions! ***\n")
-            
-            
-            // stop timer
-            
-            
-            // go to game over screen - with delay
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-//                self.performSegue(withIdentifier: "goToGameOverVC", sender: self)
-//            })
             
              // remove ability to move tiles
             for tile in array {

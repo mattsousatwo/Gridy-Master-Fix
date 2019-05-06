@@ -20,7 +20,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     var moves = MovesManager()
     var audioPlayer = AVAudioPlayer()
     let capture = ImageCapture()
-    // initalize queue for playing sounds almost at the same time of the snap to grid animation
+    // initalize queue for playing sounds almost at the same time of the snap to grid animation - to avoid game from freezing 
     let queue = DispatchQueue.global(qos: .userInteractive)
     
     // :: Variables ::
@@ -42,16 +42,21 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     var isPuzzleComplete: Bool = false
     // image to hold unfinished puzzle 
     var incompletePuzzle = UIImage()
+    // bool value to indicate if sound is on or off
+    var soundOn: Bool = true
 
     // Sound File Names
     let correctPosition = "Tab1"
     let outOfBounds = "Error 4"
     let gameComplete = "Success 2"
+    let movedToInitalGrid = "Cancel 1"
 
 
     // :: Outlets ::
     // Eye Image to display Hint Image
     @IBOutlet weak var hintButton: UIImageView!
+    // Button to enable/disable sounds
+    @IBOutlet weak var soundButton: UIImageView!
     // Outlet to contain subviews of the inital tile grid 
     @IBOutlet var initalTileGrid: [UIView]!
     // view tp act as grid 
@@ -77,6 +82,22 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     moves.hintCounter += 1
         print("- Hint Counter: \(moves.hintCounter)\n")
     }
+    
+    // Enable/Disable Sounds
+    @objc func soundsToggle(_ sender: UITapGestureRecognizer) {
+        print("sound button pressed ~~~~")
+        if soundButton.isHighlighted  {
+            print("sound is off")
+            soundButton.isHighlighted = false
+            soundOn = false
+        } else {
+           
+            print("sound is on")
+            soundButton.isHighlighted = true
+            soundOn = true
+        }
+    }
+    
     
     // Create Tiles and add tiles to inital Grid
      func createTiles(from array: [UIImage]) {
@@ -125,7 +146,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     // :: Gesture Recognizers ::
-    func addTapGesture() {
+    func addHintButtonTapGesture() {
         // Creating TapGestureRecognizer to trigger when showHint should be activated
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showHint(_:)))
         // Adding gesture recognizer to hintButton
@@ -133,17 +154,31 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         // setting gesture delegate to self
         tapGesture.delegate = self
     }
-
+    
+    func addSoundButtonTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(soundsToggle(_:)))
+        soundButton.addGestureRecognizer(tapGesture)
+        tapGesture.delegate = self
+        soundButton.isUserInteractionEnabled = true
+    }
+    
+    
     // play sound with specified file name
     func play(sound: String) {
-        let path = Bundle.main.path(forResource: sound, ofType: "m4a")
-        let url = URL(fileURLWithPath: path!)
-        do {
-                audioPlayer = try AVAudioPlayer(contentsOf: url)
-                audioPlayer.play()
-                print(" -- play sound \(sound)")
-        } catch {
-            print("- no sound file found")
+        if soundOn {
+            print("Sound is on-")
+            let path = Bundle.main.path(forResource: sound, ofType: "m4a")
+            let url = URL(fileURLWithPath: path!)
+            do {
+                    audioPlayer = try AVAudioPlayer(contentsOf: url)
+                    audioPlayer.play()
+                    print(" -- play sound \(sound)\n")
+            } catch {
+                print("- no sound file found\n")
+            }
+        
+        } else {
+            print("0  Sound is turned off\n")
         }
 
 
@@ -221,6 +256,12 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
             if nearOriginalGrid == true {
                 print("\n - near original grid")
                 
+                // play moved to inital grid sound
+                queue.async {
+                    self.play(sound: self.movedToInitalGrid)
+                }
+                
+                
                 tile.isInCorrectPosition = false
                 
                 // Drop into position
@@ -272,6 +313,7 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
                 // play game over sound
                 play(sound: gameComplete)
             } else {
+                // take a screenshot of entire screen to be presented if puzzle was not completed
                 incompletePuzzle = capture.takeScreenshot(from: self.view)!
             }
             
@@ -304,9 +346,19 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     
     func configurePlayfield() {
         // adding tap gesture to hint button
-        addTapGesture()
+        addHintButtonTapGesture()
+        addSoundButtonTapGesture()
         // adding tiles to playfield
         handleTileCreation()
+        
+        let highlighted = soundButton.isHighlighted
+        switch highlighted {
+        case true:
+            soundOn = true
+        default:
+            soundOn = false
+        }
+        print("soundOn == \(soundOn)")
     }
     
     
