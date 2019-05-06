@@ -20,7 +20,7 @@ class GameOverVC: UIViewController {
     // game image
     var gameImage = UIImage()
     // Game Over Label Text
-    var gameOverDisplay = ""
+    var gameOverDisplay = "Game Over"
     // # of times hint was pressed
     var hintCount = 0
     // :: Time Scoreboard Values ::

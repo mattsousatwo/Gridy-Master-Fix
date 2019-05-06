@@ -20,6 +20,8 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
     var moves = MovesManager()
     var audioPlayer = AVAudioPlayer()
     let capture = ImageCapture()
+    // initalize queue for playing sounds almost at the same time of the snap to grid animation
+    let queue = DispatchQueue.global(qos: .userInteractive)
     
     // :: Variables ::
     // Game Mode
@@ -235,7 +237,9 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
             // if out of grid bounds - drop in original location
             if nearGameGrid == false && nearOriginalGrid == false {
                 // Play out of bounds sound
-                play(sound: outOfBounds)
+                queue.async {
+                    self.play(sound: self.outOfBounds)
+                }
 
                 // Drop into originalTileLocation
                 print("\nDropped Out of Bounds - back to original pos \noriginalPos = (x: \(tile.originalTileLocation!.x), y: \(tile.originalTileLocation!.y)) \n")
@@ -253,7 +257,9 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
                 print("\n -- CORRECT POSITION -- n")
                 tile.isInCorrectPosition = true
                 // play correct position sound
-                play(sound: correctPosition)
+                queue.async {
+                    self.play(sound: self.correctPosition)
+                }
             }
             
             // Check if tiles are in correct spacing

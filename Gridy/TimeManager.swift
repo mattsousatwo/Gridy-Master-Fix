@@ -51,7 +51,7 @@ class TimeManager {
         case .timed:
             print("timed mode")
             // set time to 3 mins - 180 sec
-            timeValue = 180
+            timeValue = 15
             clock = timeString(interval: timeValue)
             
             // display labels
@@ -82,8 +82,8 @@ class TimeManager {
         print("CDTimer = \(clock)")
         
         if timeValue <= 0 {
-            stopTimer()
             
+            stopTimer()
             // go to next VC
             controller.performSegue(withIdentifier: "GameOverSegue", sender: self)
         }
