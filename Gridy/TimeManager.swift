@@ -51,7 +51,7 @@ class TimeManager {
         case .timed:
             print("timed mode")
             // set time to 3 mins - 180 sec
-            timeValue = 15
+            timeValue = 5
             clock = timeString(interval: timeValue)
             
             // display labels

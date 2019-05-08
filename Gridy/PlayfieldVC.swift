@@ -351,6 +351,10 @@ class PlayfieldVC: UIViewController, UIGestureRecognizerDelegate {
         // adding tiles to playfield
         handleTileCreation()
         
+        // take a screenshot of entire screen to be presented if puzzle was not touched at all - if not incompletePuzzle (image) would be blank
+        incompletePuzzle = capture.takeScreenshot(from: self.view)!
+        
+        // Check if soundOn image represents soundOn value
         let highlighted = soundButton.isHighlighted
         switch highlighted {
         case true:

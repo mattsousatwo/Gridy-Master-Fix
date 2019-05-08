@@ -97,9 +97,10 @@ class GameManager {
             
             // remove blurView
             blur.effect = nil
-            blur.isUserInteractionEnabled = false
             
         }, completion: { (success) in })
+        
+        
         
     }
     

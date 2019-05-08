@@ -11,11 +11,10 @@ import UIKit
 class GameOverVC: UIViewController {
     
     // :: References ::
-    let animations = GOAnimations()
     let time = TimeManager()
     
     // :: Variables ::
-    // mode
+    // mode - .moves by default
     var gameMode: GameManager.GameMode = .moves
     // game image
     var gameImage = UIImage()
@@ -107,8 +106,10 @@ class GameOverVC: UIViewController {
     
     // :: Configuration ::
     func configureView() {
-        // round top edges of scoreboard 
-        animations.roundEdges(of: scoreboard)
+        // round edges of scoreboard
+        scoreboard.layer.cornerRadius = 10
+            // round only top left & top right corners
+            scoreboard.layer.maskedCorners = [ .layerMaxXMinYCorner, .layerMinXMinYCorner ]
         
         presentScoreboardLabels()
     }

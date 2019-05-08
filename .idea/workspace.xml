@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffa21179-82da-45a3-bd10-e9063e3cc3ac" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Sounds/Cancel 1.m4a" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sounds/Error 4.m4a" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sounds/Success 2.m4a" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sounds/Tab1.m4a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gridy.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/Gridy.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gridy.xcodeproj/xcuserdata/mattSousa.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" afterPath="$PROJECT_DIR$/Gridy.xcodeproj/xcuserdata/mattSousa.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gridy/Base.lproj/Main.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/Gridy/Base.lproj/Main.storyboard" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gridy/GameOverAnimations.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Gridy/GameOverAnimations.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gridy/GameOverVC.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Gridy/GameOverVC.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gridy/PlayfieldVC.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Gridy/PlayfieldVC.swift" afterDir="false" />
     </list>
@@ -20,14 +17,14 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="iphonesimulator_AC70829C-525A-4D7D-82ED-890CDA10BA1A" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5528233">
+    <splitter split-orientation="horizontal" split-proportion="0.6397621">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Gridy/PlayfieldVC.swift">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="34">
-                  <caret line="140" lean-forward="true" selection-start-line="140" selection-end-line="140" />
+                <state relative-caret-position="2368">
+                  <caret line="149" column="19" selection-start-line="149" selection-start-column="19" selection-end-line="149" selection-end-column="19" />
                   <folding>
                     <element signature="e#140#152#0" expanded="true" />
                   </folding>
@@ -35,18 +32,24 @@
               </provider>
             </entry>
           </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Gridy/GameOverAnimations.swift">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="306">
+                  <caret line="52" column="35" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
+                </state>
+              </provider>
+            </entry>
+          </file>
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Gridy/PlayfieldVC.swift">
+            <entry file="file://$PROJECT_DIR$/Gridy/GameManager.swift">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="133">
-                  <caret line="39" column="30" lean-forward="true" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
-                  <folding>
-                    <element signature="e#140#152#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="388">
+                  <caret line="82" column="8" lean-forward="true" selection-start-line="82" selection-start-column="8" selection-end-line="82" selection-end-column="8" />
                 </state>
               </provider>
             </entry>
@@ -63,6 +66,7 @@
       <list>
         <option value="$PROJECT_DIR$/Gridy/GameOverVC.swift" />
         <option value="$PROJECT_DIR$/Gridy/PlayfieldVC.swift" />
+        <option value="$PROJECT_DIR$/Gridy/GameOverAnimations.swift" />
       </list>
     </option>
   </component>
@@ -79,15 +83,16 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="10" />
-    <option name="y" value="20" />
+    <option name="y" value="61" />
     <option name="width" value="1249" />
-    <option name="height" value="698" />
+    <option name="height" value="657" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Cidr.FilesView" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -118,19 +123,26 @@
               <item name="" type="efc3779f:XcodeRootNode" />
               <item name="Gridy" type="1d218c8b:XcodeProjectNode" />
               <item name="Gridy" type="fcab9f18:XcodeViewNode" />
+              <item name="Model" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="Gridy" type="1d218c8b:XcodeProjectNode" />
+              <item name="Gridy" type="fcab9f18:XcodeViewNode" />
               <item name="Controller" type="fcab9f18:XcodeViewNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Cidr.FilesView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -167,16 +179,18 @@
       <updated>1556854000602</updated>
       <workItem from="1556854002901" duration="403000" />
       <workItem from="1556855617294" duration="1862000" />
+      <workItem from="1557253218885" duration="1989000" />
+      <workItem from="1557290900753" duration="6000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2265000" />
+    <option name="totallyTimeSpent" value="4260000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="10" y="20" width="1249" height="698" extended-state="0" />
+    <frame x="10" y="61" width="1249" height="657" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27506214" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.024855012" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -188,7 +202,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32838285" />
+      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.053097345" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" />
@@ -212,11 +226,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Gridy/PlayfieldVC.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="39" column="30" lean-forward="true" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
+        <state relative-caret-position="2368">
+          <caret line="149" column="19" selection-start-line="149" selection-start-column="19" selection-end-line="149" selection-end-column="19" />
           <folding>
             <element signature="e#140#152#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gridy/GameOverAnimations.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="52" column="35" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gridy/GameManager.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="82" column="8" lean-forward="true" selection-start-line="82" selection-start-column="8" selection-end-line="82" selection-end-column="8" />
         </state>
       </provider>
     </entry>
