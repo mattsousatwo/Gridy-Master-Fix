@@ -575,7 +575,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtx-ip-geL">
-                                        <rect key="frame" x="8" y="197" width="311" height="30"/>
+                                        <rect key="frame" x="8" y="197" width="301" height="30"/>
                                         <color key="backgroundColor" red="0.53166013960000003" green="0.83183425659999999" blue="0.59627997880000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Play Again">
                                             <color key="titleColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -585,16 +585,6 @@
                                             <segue destination="R4g-gj-Kmh" kind="unwind" unwindAction="unwindToHomeWithUnwindSegue:" id="ST9-5W-R0A"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQ9-zV-rja">
-                                        <rect key="frame" x="327" y="197" width="40" height="30"/>
-                                        <color key="backgroundColor" red="0.53166013960000003" green="0.83183425659999999" blue="0.59627997880000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Share">
-                                            <color key="titleColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="shareButtonPressed:" destination="fXC-kZ-3F2" eventType="touchUpInside" id="Hms-6v-NPk"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="1000" text="Game Over" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfz-fR-VyP">
                                         <rect key="frame" x="8" y="10" width="359" height="48"/>
                                         <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -602,6 +592,9 @@
                                         <color key="textColor" red="0.2826996148" green="0.2710390687" blue="0.2417342663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gridy-share" translatesAutoresizingMaskIntoConstraints="NO" id="FyK-Eh-n75">
+                                        <rect key="frame" x="319" y="189" width="48" height="48"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.77458798890000002" green="0.85299998519999998" blue="0.74942666290000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -612,14 +605,14 @@
                                     <constraint firstAttribute="height" constant="250" id="6rS-UQ-oy9"/>
                                     <constraint firstItem="mtx-ip-geL" firstAttribute="leading" secondItem="1D5-Qa-E4f" secondAttribute="leading" constant="8" id="7hL-Ac-MJc"/>
                                     <constraint firstAttribute="bottom" secondItem="mtx-ip-geL" secondAttribute="bottom" constant="23" id="Ad2-cL-uoq"/>
-                                    <constraint firstAttribute="trailing" secondItem="wQ9-zV-rja" secondAttribute="trailing" constant="8" id="Dvi-aA-0Wc"/>
-                                    <constraint firstAttribute="bottom" secondItem="wQ9-zV-rja" secondAttribute="bottom" constant="23" id="Gpf-2H-xWX"/>
-                                    <constraint firstItem="wQ9-zV-rja" firstAttribute="leading" secondItem="mtx-ip-geL" secondAttribute="trailing" constant="8" id="Jmh-6A-HDT"/>
                                     <constraint firstItem="bCR-p5-NXP" firstAttribute="top" secondItem="Lf5-MZ-Qhw" secondAttribute="bottom" constant="12" id="LYv-pj-5Ly"/>
                                     <constraint firstItem="vfz-fR-VyP" firstAttribute="top" secondItem="1D5-Qa-E4f" secondAttribute="top" constant="10" id="T2R-xX-rPl"/>
                                     <constraint firstItem="mtx-ip-geL" firstAttribute="top" secondItem="s7a-fY-MdY" secondAttribute="bottom" constant="18" id="a0P-tu-38C"/>
                                     <constraint firstAttribute="trailing" secondItem="Lf5-MZ-Qhw" secondAttribute="trailing" constant="45" id="a1c-VY-oJe"/>
+                                    <constraint firstAttribute="trailing" secondItem="FyK-Eh-n75" secondAttribute="trailing" constant="8" id="aPF-Rx-CMS"/>
                                     <constraint firstItem="s7a-fY-MdY" firstAttribute="top" secondItem="bCR-p5-NXP" secondAttribute="bottom" constant="12" id="drC-O9-fVM"/>
+                                    <constraint firstAttribute="bottom" secondItem="FyK-Eh-n75" secondAttribute="bottom" constant="13" id="lak-Kt-69X"/>
+                                    <constraint firstItem="FyK-Eh-n75" firstAttribute="leading" secondItem="mtx-ip-geL" secondAttribute="trailing" constant="10" id="nsS-V0-nY2"/>
                                     <constraint firstAttribute="trailing" secondItem="bCR-p5-NXP" secondAttribute="trailing" constant="45" id="pxO-nO-72x"/>
                                     <constraint firstItem="bCR-p5-NXP" firstAttribute="leading" secondItem="1D5-Qa-E4f" secondAttribute="leading" constant="45" id="vFu-ef-bcx"/>
                                     <constraint firstItem="Lf5-MZ-Qhw" firstAttribute="leading" secondItem="1D5-Qa-E4f" secondAttribute="leading" constant="45" id="xSz-rt-O45"/>
@@ -658,7 +651,7 @@
                         <outlet property="scoreLabel" destination="CGE-oT-GzF" id="j7B-o8-Yto"/>
                         <outlet property="scoreLabelValue" destination="15T-MO-58S" id="eY5-Uy-bOO"/>
                         <outlet property="scoreboard" destination="1D5-Qa-E4f" id="fnd-8X-OlG"/>
-                        <outlet property="shareButton" destination="wQ9-zV-rja" id="Dl5-GR-953"/>
+                        <outlet property="shareButton" destination="FyK-Eh-n75" id="Kly-Xt-998"/>
                         <outlet property="timeLabel" destination="93V-fD-y7f" id="evR-v9-4GS"/>
                         <outlet property="timeLabelValue" destination="SwS-PX-Oc5" id="PCs-Do-Ij0"/>
                     </connections>
@@ -678,6 +671,7 @@
         <image name="Gridy-name-large-green" width="330" height="160"/>
         <image name="Gridy-name-small-green" width="70" height="34"/>
         <image name="Gridy-name-small-grey" width="70" height="34"/>
+        <image name="Gridy-share" width="48" height="48"/>
         <image name="Gridy-sound-off" width="48" height="48"/>
         <image name="Gridy-sound-on" width="48" height="48"/>
         <image name="Gridy_Trans_BG" width="375" height="667"/>

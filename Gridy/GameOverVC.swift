@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameOverVC: UIViewController {
+class GameOverVC: UIViewController, UIGestureRecognizerDelegate {
     
     // :: References ::
     let time = TimeManager()
@@ -56,7 +56,7 @@ class GameOverVC: UIViewController {
     // play again outlet
     @IBOutlet weak var playAgainButton: UIButton!
     // share outlet
-    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var shareButton: UIImageView!
     
     // :: Buttons ::
     // play again action
@@ -64,7 +64,7 @@ class GameOverVC: UIViewController {
         print("- playAgain")
     }
     // share action
-    @IBAction func shareButtonPressed(_ sender: Any) {
+    @objc func shareButtonPressed(_ sender: UITapGestureRecognizer) {
         print("- shareButton")
         let message = shareMessage
         let image = gameImage
@@ -75,6 +75,15 @@ class GameOverVC: UIViewController {
         print(message)
         
     }
+    
+    func addShareTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(shareButtonPressed(_:)))
+        shareButton.addGestureRecognizer(tapGesture)
+        tapGesture.delegate = self
+        shareButton.isUserInteractionEnabled = true
+    }
+    
+    
     
     
     // func to display scoreboard labels
@@ -112,6 +121,7 @@ class GameOverVC: UIViewController {
             scoreboard.layer.maskedCorners = [ .layerMaxXMinYCorner, .layerMinXMinYCorner ]
         
         presentScoreboardLabels()
+        addShareTapGesture()
     }
     
     override func viewDidLoad() {
