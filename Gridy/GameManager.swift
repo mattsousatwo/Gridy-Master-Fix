@@ -97,10 +97,16 @@ class GameManager {
             
             // remove blurView
             blur.effect = nil
+
+        }, completion: { (success) in
             
-        }, completion: { (success) in })
-        
-        
+            // remove views
+            view.willRemoveSubview(blur)
+            view.willRemoveSubview(previewImageView)
+            blur.removeFromSuperview()
+            previewImageView.removeFromSuperview()
+            
+        })
         
     }
     
